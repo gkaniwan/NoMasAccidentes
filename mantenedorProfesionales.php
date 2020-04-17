@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>No Mas Accidentes | Inicio Administrador</title>
+  <title>No Mas Accidentes | Mantenedor Profesionales</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -170,7 +170,7 @@
           </li>
 
           <li class="nav-item has-treeview">
-            <a  class="nav-link">
+            <a class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Mantenedores
@@ -219,12 +219,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Reportes</h1>
+            <h1>Mantenedor Profesionales</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="inicioAdmin.php">Inicio</a></li>
-              <li class="breadcrumb-item active">Reportes</li>
+              <li class="breadcrumb-item active">Mantenedor Profesionales</li>
             </ol>
           </div>
         </div>
@@ -234,134 +234,26 @@
     <!-- Main content -->
     <section class="content">
 
-        <!-- Info boxes -->
         <div class="row">
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
 
-              <div class="info-box-content">
-                <span class="info-box-text">Uso CPU</span>
-                <span class="info-box-number">
-                  25
-                  <small>%</small>
-                </span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Me gusta</span>
-                <span class="info-box-number">194</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-
-          <!-- fix for small devices only -->
-          <div class="clearfix hidden-md-up"></div>
-
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Ventas</span>
-                <span class="info-box-number">760</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Nuevos Miembros</span>
-                <span class="info-box-number">12</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="card">
-              <div class="card-header border-0">
-                <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Visitantes Web</h3>
-                  <a href="javascript:void(0);">Ver reporte</a>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="d-flex">
-                  <p class="d-flex flex-column">
-                    <span class="text-bold text-lg">150</span>
-                    <span>visitas Totales mes</span>
-                  </p>
-                  <p class="ml-auto d-flex flex-column text-right">
-                    <span class="text-success">
-                      <i class="fas fa-arrow-up"></i> 12.5%
-                    </span>
-                    <span class="text-muted">Desde la ultima semana</span>
-                  </p>
-                </div>
-                <!-- /.d-flex -->
-
-                <div class="position-relative mb-4">
-                  <canvas id="visitors-chart" height="200"></canvas>
-                </div>
-
-                <div class="d-flex flex-row justify-content-end">
-                  <span class="mr-2">
-                    <i class="fas fa-square text-primary"></i> Esta semana
-                  </span>
-
-                  <span>
-                    <i class="fas fa-square text-gray"></i> Semana anterior
-                  </span>
-                </div>
-              </div>
-            </div>
-            <!-- /.card -->
-
-        </div>
-         <div class="col-lg-6">
+         <div class="col-lg-12">
 
             <div class="card">
               <div class="card-header border-0">
-                <h3 class="card-title">Clientes</h3>
+                <h3 class="card-title">Lista Profesionales</h3>
                 <div class="card-tools">
-                  <a href="#" class="btn btn-tool btn-sm">
-                    <i class="fas fa-download"></i>
-                  </a>
-                  <a href="#" class="btn btn-tool btn-sm">
-                    <i class="fas fa-bars"></i>
-                  </a>
+                  <button type="button" class="btn btn-sm btn-block btn-outline-success" onclick="verCrearCliente();">Nuevo Profesional</button>
                 </div>
-              </div>
               <div class="card-body table-responsive p-0">
                 <table class="table table-striped table-valign-middle">
                   <thead>
                   <tr>
-                    <th>Nombre Cliente</th>
-                    <th>Asesorias</th>
-                    <th>Accidentes</th>
-                    <th>Reporte</th>
+                    <th>Nombre</th>
+                    <th>Capacitaciones</th>
+                    <th>Visitas</th>
+                    <th>Casos</th>
+                    <th></th>
+                    <th></th>
                   </tr>
                   </thead>
                   <tbody>
@@ -383,6 +275,12 @@
                         <i class="fas fa-search"></i>
                       </a>
                     </td>
+                    <td>
+                      <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
+                    </td>
                   </tr>
                   <tr>
                     <td>
@@ -402,6 +300,12 @@
                         <i class="fas fa-search"></i>
                       </a>
                     </td>
+                    <td>
+                      <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
+                    </td>
                   </tr>
                   <tr>
                     <td>
@@ -420,6 +324,12 @@
                       <a href="#" class="text-muted">
                         <i class="fas fa-search"></i>
                       </a>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
                     </td>
                   </tr>
                   <tr>
@@ -441,6 +351,12 @@
                         <i class="fas fa-search"></i>
                       </a>
                     </td>
+                    <td>
+                      <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
+                    </td>
                   </tr>
                   </tbody>
                 </table>
@@ -458,6 +374,9 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <?php include('modalActualizarcliente.php');?>
+  <?php include('modalGuardarCliente.php');?>
 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
@@ -489,5 +408,25 @@
 <script src="plugins/chart.js/Chart.min.js"></script>
 <script src="dist/js/demo.js"></script>
 <script src="dist/js/pages/dashboard3.js"></script>
+
+<script>
+  
+  function verActualizarCliente(){
+
+    $('#modalActualizarCliente').modal('show');
+
+  }
+
+    function verCrearCliente(){
+
+    $('#modalNuevoCliente').modal('show');
+
+  }
+
+</script>
+
+
+
+
 </body>
 </html>

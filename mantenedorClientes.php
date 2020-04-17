@@ -185,9 +185,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="mantenedorReportes.php" class="nav-link">
+                <a href="mantenedorProfesionales.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Reportes</p>
+                  <p>Profesionales</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -242,7 +242,7 @@
               <div class="card-header border-0">
                 <h3 class="card-title">Clientes</h3>
                 <div class="card-tools">
-                  <button type="button" class="btn btn-sm btn-block btn-outline-success">Agregar</button>
+                  <button type="button" class="btn btn-sm btn-block btn-outline-success" onclick="verCrearCliente();">Agregar</button>
                 </div>
               <div class="card-body table-responsive p-0">
                 <table class="table table-striped table-valign-middle">
@@ -276,7 +276,7 @@
                       </a>
                     </td>
                     <td>
-                      <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verModal();">Modificar</button>
+                      <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
                     </td>
                     <td>
                       <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
@@ -301,7 +301,7 @@
                       </a>
                     </td>
                     <td>
-                      <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verModal();">Modificar</button>
+                      <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
                     </td>
                     <td>
                       <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
@@ -326,7 +326,7 @@
                       </a>
                     </td>
                     <td>
-                      <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verModal();">Modificar</button>
+                      <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
                     </td>
                     <td>
                       <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
@@ -352,7 +352,7 @@
                       </a>
                     </td>
                     <td>
-                      <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verModal();">Modificar</button>
+                      <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
                     </td>
                     <td>
                       <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
@@ -376,6 +376,7 @@
   <!-- /.content-wrapper -->
 
   <?php include('modalActualizarcliente.php');?>
+  <?php include('modalGuardarCliente.php');?>
 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
@@ -410,9 +411,15 @@
 
 <script>
   
-  function verModal(){
+  function verActualizarCliente(){
 
     $('#modalActualizarCliente').modal('show');
+
+  }
+
+    function verCrearCliente(){
+
+    $('#modalNuevoCliente').modal('show');
 
   }
 
