@@ -191,15 +191,39 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="mantenedorAsesorias.php" class="nav-link">
+                <a href="mantenedorContratos.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Asesorias</p>
+                  <p>Contratos</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="mantenedorVisitas.php" class="nav-link">
+                <a href="mantenedorPagos.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Visitas</p>
+                  <p>Pagos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mantenedorPagos.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Actividades</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mantenedorPagos.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Accidentes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mantenedorPagos.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Checklist</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mantenedorPagos.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Casos</p>
                 </a>
               </li>
             </ul>
@@ -241,11 +265,8 @@
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Uso CPU</span>
-                <span class="info-box-number">
-                  25
-                  <small>%</small>
-                </span>
+                <span class="info-box-text">Profesionales</span>
+                <span class="info-box-number">12</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -287,7 +308,7 @@
               <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Nuevos Miembros</span>
+                <span class="info-box-text">Clientes</span>
                 <span class="info-box-number">12</span>
               </div>
               <!-- /.info-box-content -->
@@ -303,14 +324,14 @@
             <div class="card">
               <div class="card-header border-0">
                 <div class="d-flex justify-content-between">
-                  <h3 class="card-title">Visitantes Web</h3>
+                  <h3 class="card-title">Actividades</h3>
                   <a href="javascript:void(0);">Ver reporte</a>
                 </div>
               </div>
               <div class="card-body">
                 <div class="d-flex">
                   <p class="d-flex flex-column">
-                    <span class="text-bold text-lg">150</span>
+                    <span class="text-bold text-lg">25</span>
                     <span>visitas Totales mes</span>
                   </p>
                   <p class="ml-auto d-flex flex-column text-right">
@@ -450,9 +471,6 @@
           </div>
           <!-- /.col-md-6 -->
         </div>
-
-
-
 
     </section>
     <!-- /.content -->

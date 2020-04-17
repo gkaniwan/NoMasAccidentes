@@ -1,8 +1,8 @@
-      <div class="modal fade" id="modalNuevoCliente">
+      <div class="modal fade" id="modalActualizarProfesional">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Nuevo Cliente</h4>
+              <h4 class="modal-title">Actualizar Profesional</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -17,25 +17,19 @@
                   <div class="form-group row">
                     <label for="nombreCliente" class="col-sm-2 col-form-label">Nombre</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="nombreCliente" placeholder="Nombre">
+                      <input type="email" class="form-control" id="nombreCliente" placeholder="Nombre">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="rutEmpresa" class="col-sm-2 col-form-label">Rut</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="rutEmpresa" placeholder="Rut">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="direccioncliente" class="col-sm-2 col-form-label">Dirección</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="direccioncliente" placeholder="Dirección">
+                      <input type="password" class="form-control" id="rutEmpresa" placeholder="Rut">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="telefonoCliente" class="col-sm-2 col-form-label">Telefono</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="telefonoCliente" placeholder="Telefono">
+                      <input type="email" class="form-control" id="telefonoCliente" placeholder="Telefono">
                     </div>
                   </div>
                   <div class="form-group row">

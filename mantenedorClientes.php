@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>No Mas Accidentes | Mantenedor Usuarios</title>
+  <title>No Mas Accidentes | Mantenedor Clientes</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -170,7 +170,7 @@
           </li>
 
           <li class="nav-item has-treeview">
-            <a class="nav-link">
+            <a  class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Mantenedores
@@ -191,15 +191,39 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="mantenedorAsesorias.php" class="nav-link">
+                <a href="mantenedorContratos.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Asesorias</p>
+                  <p>Contratos</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="mantenedorVisitas.php" class="nav-link">
+                <a href="mantenedorPagos.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Visitas</p>
+                  <p>Pagos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mantenedorActividades.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Actividades</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mantenedorAccidentes.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Accidentes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mantenedorChecklist.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Checklist</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mantenedorCasos.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Casos</p>
                 </a>
               </li>
             </ul>
@@ -219,12 +243,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Mantenedor Cliente</h1>
+            <h1>Mantenedor Clientes</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="inicioAdmin.php">Inicio</a></li>
-              <li class="breadcrumb-item active">Mantenedor Cliente</li>
+              <li class="breadcrumb-item active">Mantenedor Clientes</li>
             </ol>
           </div>
         </div>
@@ -248,116 +272,87 @@
                 <table class="table table-striped table-valign-middle">
                   <thead>
                   <tr>
-                    <th>Nombre Cliente</th>
-                    <th>Asesorias</th>
-                    <th>Accidentes</th>
-                    <th>Reporte</th>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Rut</th>
+                    <th>Mail</th>
+                    <th>Telefono</th>
+                    <th>Direccion</th>
                     <th></th>
                     <th></th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>
-                      <!-- <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2"> -->
-                      Cliente 1
-                    </td>
-                    <td>4</td>
-                    <td>
-                      <small class="text-success mr-1">
-                        <i class="fas fa-arrow-up"></i>
-                        20%
-                      </small>
-                      2
-                    </td>
-                    <td>
-                      <a href="#" class="text-muted">
-                        <i class="fas fa-search"></i>
-                      </a>
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <!-- <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2"> -->
-                      Cliente 2 
-                    </td>
-                    <td>2</td>
-                    <td>
-                      <small class="text-warning mr-1">
-                        <i class="fas fa-arrow-down"></i>
-                        10%
-                      </small>
-                      2
-                    </td>
-                    <td>
-                      <a href="#" class="text-muted">
-                        <i class="fas fa-search"></i>
-                      </a>
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                     <!--  <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2"> -->
-                      Cliente 3
-                    </td>
-                    <td>5</td>
-                    <td>
-                      <small class="text-danger mr-1">
-                        <i class="fas fa-arrow-down"></i>
-                        10%
-                      </small>
-                      1
-                    </td>
-                    <td>
-                      <a href="#" class="text-muted">
-                        <i class="fas fa-search"></i>
-                      </a>
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <!-- <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2"> -->
-                      Cliente 4
-                      <!-- <span class="badge bg-danger">NEW</span> -->
-                    </td>
-                    <td>1</td>
-                    <td>
-                      <small class="text-success mr-1">
-                        <i class="fas fa-arrow-up"></i>
-                        50%
-                      </small>
-                      5
-                    </td>
-                    <td>
-                      <a href="#" class="text-muted">
-                        <i class="fas fa-search"></i>
-                      </a>
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
-                    </td>
-                  </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>Cliente 1</td>
+                      <td>123456-7</td>
+                      <td>Cliente1@clientes.cl</td>
+                      <td>12345678</td>
+                      <td>Calle Sin nombre 100</td>
+                      <td>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Cliente 2</td>
+                      <td>7984570-7</td>
+                      <td>Cliente2@clientes.cl</td>
+                      <td>13578942</td>
+                      <td>Calle Sin nombre 159</td>
+                      <td>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Cliente 3</td>
+                      <td>98745612-5</td>
+                      <td>Cliente3@clientes.cl</td>
+                      <td>7539518</td>
+                      <td>Calle Sin nombre 875</td>
+                      <td>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>Cliente 4</td>
+                      <td>8527410-7</td>
+                      <td>Cliente4@clientes.cl</td>
+                      <td>96385274</td>
+                      <td>Calle Sin nombre 684</td>
+                      <td>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>Cliente 5</td>
+                      <td>7894561-7</td>
+                      <td>Cliente5@clientes.cl</td>
+                      <td>36985214</td>
+                      <td>Calle Sin nombre 24</td>
+                      <td>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -366,9 +361,6 @@
           </div>
           <!-- /.col-md-6 -->
         </div>
-
-
-
 
     </section>
     <!-- /.content -->

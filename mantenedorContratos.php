@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>No Mas Accidentes | Mantenedor Profesionales</title>
+  <title>No Mas Accidentes | Mantenedor Contratros</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -243,12 +243,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Mantenedor Profesionales</h1>
+            <h1>Mantenedor Contratos</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="inicioAdmin.php">Inicio</a></li>
-              <li class="breadcrumb-item active">Mantenedor Profesionales</li>
+              <li class="breadcrumb-item active">Mantenedor Contratos</li>
             </ol>
           </div>
         </div>
@@ -264,19 +264,20 @@
 
             <div class="card">
               <div class="card-header border-0">
-                <h3 class="card-title">Profesionales</h3>
+                <h3 class="card-title">Contratos</h3>
                 <div class="card-tools">
-                  <button type="button" class="btn btn-sm btn-block btn-outline-success" onclick="verCrearCliente();">Nuevo Profesional</button>
+                  <button type="button" class="btn btn-sm btn-block btn-outline-success" onclick="verCrearContrato();">Agregar</button>
                 </div>
               <div class="card-body table-responsive p-0">
                 <table class="table table-striped table-valign-middle">
                   <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Rut</th>
-                    <th>Telefono</th>
-                    <th>Mail</th>
+                    <th>Cliente</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Pago</th>
+                    <th>Valor</th>
+                    <th>Descripción</th>
                     <th></th>
                     <th></th>
                   </tr>
@@ -284,12 +285,13 @@
                   <tbody>
                     <tr>
                       <td>1</td>
-                      <td>Profesional 1</td>
-                      <td>1234567-8</td>
-                      <td>98765432</td>
-                      <td>profesional1@profesional.cl</td>
+                      <td>Cliente 1</td>
+                      <td>01-01-2020</td>
+                      <td>01-04-2020</td>
+                      <td>$100.000</td>
+                      <td>Contrato Servicio</td>
                       <td>
-                        <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarContrato();">Modificar</button>
                       </td>
                       <td>
                         <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
@@ -297,56 +299,60 @@
                     </tr>
                     <tr>
                       <td>2</td>
-                      <td>Profesional 2</td>
-                      <td>1234567-8</td>
-                      <td>98765432</td>
-                      <td>profesional2@profesional.cl</td>
+                      <td>Cliente 2</td>
+                      <td>01-01-2020</td>
+                      <td>01-04-2020</td>
+                      <td>$100.000</td>
+                      <td>Contrato Servicio</td>
                       <td>
-                        <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarContrato();">Modificar</button>
                       </td>
                       <td>
                         <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
                       </td>
                     </tr>
                     <tr>
-                        <td>3</td>
-                        <td>Profesional 3</td>
-                        <td>1234567-8</td>
-                        <td>98765432</td>
-                        <td>profesional3@profesional.cl</td>
-                        <td>
-                          <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
-                        </td>
-                        <td>
-                          <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
-                        </td>
-                      </tr>
+                      <td>3</td>
+                      <td>Cliente 3</td>
+                      <td>01-01-2020</td>
+                      <td>01-04-2020</td>
+                      <td>$100.000</td>
+                      <td>Contrato Servicio</td>
+                      <td>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarContrato();">Modificar</button>
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
+                      </td>
+                    </tr>
                     <tr>
-                        <td>4</td>
-                        <td>Profesional 4</td>
-                        <td>1234567-8</td>
-                        <td>98765432</td>
-                        <td>profesional4@profesional.cl</td>
-                        <td>
-                          <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
-                        </td>
-                        <td>
-                          <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
-                        </td>
-                      </tr>
+                      <td>4</td>
+                      <td>Cliente 4</td>
+                      <td>01-01-2020</td>
+                      <td>01-04-2020</td>
+                      <td>$100.000</td>
+                      <td>Contrato Servicio</td>
+                      <td>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarContrato();">Modificar</button>
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
+                      </td>
+                    </tr>
                     <tr>
-                        <td>5</td>
-                        <td>Profesional 5</td>
-                        <td>1234567-8</td>
-                        <td>98765432</td>
-                        <td>profesional5@profesional.cl</td>
-                        <td>
-                          <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCliente();">Modificar</button>
-                        </td>
-                        <td>
-                          <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
-                        </td>
-                      </tr>
+                      <td>5</td>
+                      <td>Cliente 5</td>
+                      <td>01-01-2020</td>
+                      <td>01-04-2020</td>
+                      <td>$100.000</td>
+                      <td>Contrato Servicio</td>
+                      <td>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarContrato();">Modificar</button>
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -361,8 +367,8 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <?php include('modalActualizarProfesional.php');?>
-  <?php include('modalNuevoProfesional.php');?>
+  <?php include('modalActualizarContrato.php');?>
+  <?php include('modalNuevoContrato.php');?>
 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
@@ -397,15 +403,15 @@
 
 <script>
   
-  function verActualizarCliente(){
+  function verActualizarContrato(){
 
-    $('#modalActualizarProfesional').modal('show');
+    $('#modalActualizarContrato').modal('show');
 
   }
 
-    function verCrearCliente(){
+    function verCrearContrato(){
 
-    $('#modalNuevoProfesional').modal('show');
+    $('#modalNuevoContrato').modal('show');
 
   }
 
