@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>No Mas Accidentes | Inicio Cliente</title>
+  <title>No Mas Accidentes | Inicio Profesional</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -59,7 +59,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Nombre Cliente</a>
+          <a href="#" class="d-block">Nombre Profesional</a>
         </div>
       </div>
 
@@ -69,7 +69,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview">
-            <a href="inicioCliente.php" class="nav-link">
+            <a href="inicioProfesional.php" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Inicio
@@ -77,10 +77,10 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="inicioCliente.php" class="nav-link">
+            <a href="profesionalMisclientes.php" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Descargar Reporte
+                Clientes
               </p>
             </a>
           </li>
@@ -129,7 +129,12 @@
             </div>
             <!-- /.info-box -->
           </div>
-          <!-- /.col -->
+          <!-- /.col -->          
+
+
+
+
+
         </div>
 
         <div class="row">
@@ -138,22 +143,36 @@
             <!-- Horizontal Form -->
             <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title">Reportar Accidente</h3>
+                <h3 class="card-title">Crear Actividad</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
               <form class="form-horizontal">
                 <div class="card-body">
                   <div class="form-group row">
-                    <label for="reportarAccidente" class="col-sm-2 col-form-label">Tipo Accidente</label>
+                    <label for="reportarAccidente" class="col-sm-2 col-form-label">Cliente</label>
                     <div class="col-sm-10">
                       <select class="form-control" id="reportarAccidente">
-                        <option value="accidente1">Tipo Accidente 1</option>
-                        <option value="accidente2">Tipo Accidente 2</option>
-                        <option value="accidente3">Tipo Accidente 3</option>
-                        <option value="accidente4">Tipo Accidente 4</option>
-                        <option value="accidente5">Tipo Accidente 5</option>
+                        <option value="accidente1">Cliente 1</option>
+                        <option value="accidente2">cliente 3</option>
+                        <option value="accidente3">cliente 4</option>
                       </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="reportarAccidente" class="col-sm-2 col-form-label">Tipo Actividad</label>
+                    <div class="col-sm-10">
+                      <select class="form-control" id="reportarAccidente">
+                        <option value="accidente1">Capacitación</option>
+                        <option value="accidente2">Planificar Visita</option>
+                        <option value="accidente3">Asesoria</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="asesoriaFecha" class="col-sm-2 col-form-label">Fecha</label>
+                    <div class="col-sm-10">
+                      <input type="date" class="form-control" id="asesoriaFecha">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -165,7 +184,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-success float-right">Enviar</button>
+                  <button type="submit" class="btn btn-success float-right">Guardar</button>
                   <button type="submit" class="btn btn-default">Borrar</button>
                 </div>
                 <!-- /.card-footer -->
@@ -173,82 +192,18 @@
             </div>
             <!-- /.card -->
 
-                        <!-- Horizontal Form -->
-            <div class="card card-info">
-              <div class="card-header">
-                <h3 class="card-title">Solicitud Actividad</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form class="form-horizontal">
-                <div class="card-body">
-                  <div class="form-group row">
-                    <label for="reportarAccidente" class="col-sm-2 col-form-label">Tipo de Actividad</label>
-                    <div class="col-sm-10">
-                      <select class="form-control" id="reportarAccidente">
-                        <option value="accidente1">Capacitación</option>
-                        <option value="accidente2">Visita</option>
-                        <option value="accidente3">Gestiones</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="asesoriaFecha" class="col-sm-2 col-form-label">Fecha</label>
-                    <div class="col-sm-10">
-                      <input type="date" class="form-control" id="asesoriaFecha">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="descripcionAsesoria" class="col-sm-2 col-form-label">Descripción</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="descripcionAsesoria" placeholder="Descripcion solicitud">
-                    </div>
-                  </div>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-success float-right">Enviar</button>
-                  <button type="submit" class="btn btn-default">Borrar</button>
-                </div>
-                <!-- /.card-footer -->
-              </form>
-            </div>
-            <!-- /.card -->
+
 
 
         </div>
         <div class="col-md-6">
-            <!-- Horizontal Form -->
-            <div class="card card-info">
-              <div class="card-header">
-                <h3 class="card-title">Solicitud Asesoria Especial</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form class="form-horizontal">
-                <div class="card-body">
-                  <div class="form-group row">
-                    <label for="asesoriaFecha" class="col-sm-2 col-form-label">Fecha</label>
-                    <div class="col-sm-10">
-                      <input type="date" class="form-control" id="asesoriaFecha">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="descripcionAsesoria" class="col-sm-2 col-form-label">Descripción</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="descripcionAsesoria" placeholder="Descripcion Asesoria">
-                    </div>
-                  </div>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-success float-right">Enviar</button>
-                  <button type="submit" class="btn btn-default">Borrar</button>
-                </div>
-                <!-- /.card-footer -->
-              </form>
-            </div>
-            <!-- /.card -->
+
+
+
+
+
+
+
         </div>
 
 
