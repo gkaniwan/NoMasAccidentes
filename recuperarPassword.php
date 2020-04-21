@@ -21,7 +21,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="index2.html"><b>No Mas Accidentes</b></a>
+    <a href="login.php"><b>No Mas Accidentes</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -29,7 +29,7 @@
       <p class="login-box-msg">Olvidaste tu password?</p>
       <p class="login-box-msg"> Aqui puedes recuperarlo facilmente. Ingresa tu correo electronico</p>
 
-      <form action="recover-password.html" method="post">
+      <form action="Recupera.php" method="post">
         <div class="input-group mb-3">
           <input type="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
@@ -49,9 +49,6 @@
       <p class="mt-3 mb-1">
         <a href="login.php">Volver al Login</a>
       </p>
-<!--       <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new membership</a>
-      </p> -->
     </div>
     <!-- /.login-card-body -->
   </div>

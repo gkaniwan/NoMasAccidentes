@@ -53,12 +53,6 @@
         </div>
         <div class="row">
           <div class="col-8">
-<!--             <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Recuerdame
-              </label>
-            </div> -->
           </div>
           <!-- /.col -->
           <div class="col-4">
@@ -68,13 +62,9 @@
         </div>
       </form>
 
-
       <p class="mb-1">
         <a href="recuperarPassword.php">Olvide mi password</a>
       </p>
-<!--       <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new membership</a>
-      </p> -->
     </div>
     <!-- /.login-card-body -->
   </div>
