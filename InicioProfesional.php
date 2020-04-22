@@ -109,7 +109,6 @@
       <div class="container-fluid">
 
         <div class="row">
-
           <div class="col-md-3 col-sm-6 col-12">
             <div class="info-box bg-warning">
               <span class="info-box-icon"><i class="far fa-calendar-alt"></i></span>
@@ -117,24 +116,12 @@
               <div class="info-box-content">
                 <span class="info-box-text">Proxima Visita</span>
                 <span class="info-box-number">21-04-2020</span>
-
-<!--                 <div class="progress">
-                  <div class="progress-bar" style="width: 70%"></div>
-                </div>
-                <span class="progress-description">
-                  70% Increase in 30 Days
-                </span> -->
               </div>
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
           </div>
           <!-- /.col -->          
-
-
-
-
-
         </div>
 
         <div class="row">
@@ -191,30 +178,13 @@
               </form>
             </div>
             <!-- /.card -->
-
-
-
-
         </div>
         <div class="col-md-6">
 
-
-
-
-
-
-
         </div>
-
-
-
 
       </div>
     </div>
-
-
-
-
 
     </section>
     <!-- /.content -->

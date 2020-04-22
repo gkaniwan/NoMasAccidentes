@@ -9,9 +9,7 @@
             </div>
             <div class="modal-body">
 
-            <!-- Horizontal Form -->
             <div class="card card-info">
-              <!-- form start -->
               <form class="form-horizontal">
                 <div class="card-body">
                   <div class="form-group row">
@@ -45,19 +43,13 @@
                     </div>
                   </div>
                 </div>
-                <!-- /.card-body -->
               </form>
             </div>
-            <!-- /.card -->
-              
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
               <button type="button" class="btn btn-success">Guardar</button>
             </div>
           </div>
-          <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
       </div>
-      <!-- /.modal -->

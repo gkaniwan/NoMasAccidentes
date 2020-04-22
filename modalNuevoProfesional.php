@@ -9,9 +9,7 @@
             </div>
             <div class="modal-body">
 
-            <!-- Horizontal Form -->
             <div class="card card-info">
-              <!-- form start -->
               <form class="form-horizontal">
                 <div class="card-body">
                   <div class="form-group row">
@@ -54,4 +52,3 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
-      <!-- /.modal -->
