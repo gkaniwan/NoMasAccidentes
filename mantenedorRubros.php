@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>No Mas Accidentes | Mantenedor Clientes</title>
+  <title>No Mas Accidentes | Mantenedor Rubros</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 
 </head>
-<body class="hold-transition sidebar-mini" onload="buscarClientes();">
+<body class="hold-transition sidebar-mini" onload="buscarRubros();">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
@@ -139,7 +139,7 @@
                   <p>Casos</p>
                 </a>
               </li>
-               <li class="nav-item">
+              <li class="nav-item">
                 <a href="mantenedorRubros.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Rubros</p>
@@ -162,12 +162,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Mantenedor Clientes</h1>
+            <h1>Mantenedor Rubros</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="inicioAdmin.php">Inicio</a></li>
-              <li class="breadcrumb-item active">Mantenedor Clientes</li>
+              <li class="breadcrumb-item active">Mantenedor Rubros</li>
             </ol>
           </div>
         </div>
@@ -182,10 +182,10 @@
 
        <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Clientes</h3>
+          <h3 class="card-title">Rubros</h3>
           
           <div class="card-tools">
-            <button type="button" class="btn btn-sm btn-block btn-outline-success" onclick="verCrearCliente();">Agregar Cliente</button>
+            <button type="button" class="btn btn-sm btn-block btn-outline-success" onclick="verCrearRubro();">Agregar Rubro</button>
             <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
               <i class="fas fa-minus"></i></button>
             <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
@@ -193,7 +193,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="form-group" id="tablaClientes">
+          <div class="form-group" id="tablaRubros">
 
             </div>
         </div>
@@ -210,8 +210,8 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <?php include('modalActualizarcliente.php');?>
-  <?php include('modalNuevoCliente.php');?>
+  <?php include('modalActualizarRubro.php');?>
+  <?php include('modalNuevoRubro.php');?>
 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
@@ -250,64 +250,63 @@
 
 <script>
   
-  function verActualizarCliente($rutCliente){
+  function verActualizarRubro($IDRubro){
 
-    console.log($rutCliente[0]);
+    console.log($IDRubro[0]);
     dato4 = 4;
-    rutCliente = $rutCliente[0];
+    IDRubro = $IDRubro[0];
 
         $.ajax({
-        url: "./funciones/funcionClientes.php",
+        url: "./funciones/funcionRubro.php",
         type:"POST",
-        data:{dato4 : dato4, rutCliente : rutCliente},
+        data:{dato4 : dato4, IDRubro : IDRubro},
         dataType: 'json',
         cache:false,
         success:function(resultado){
           console.log(resultado);
-          $("#rutClienteModificar").val(resultado[0].RUTCliente);
-          $("#nombreClienteModificar").val(resultado[0].Nombre);
-          $("#direccionclienteModificar").val(resultado[0].Direccion);
-          $("#telefonoClienteUnoModificar").val(resultado[0].TelefonoUno);
-          $("#telefonoClienteDosModificar").val(resultado[0].TelefonoDos);
-          $("#emailClienteModificar").val(resultado[0].Email);
-          // $("#contrasenaClienteModificar").val(resultado[0].RUTCliente);
-          $("#selectRubroClienteModificar").val(resultado[0].IDRubro);
-
-          $('#modalActualizarCliente').modal('show');
+          $("#idRubroModificar").val(resultado[0].IDRubro);
+          $("#tipoRubroModificar").val(resultado[0].Tipo);
+         
+          $('#modalActualizarRubro').modal('show');
         }
 
     });
 
   }
 
-  function verCrearCliente(){
+  function verCrearRubro(){
 
-    $('#modalNuevoCliente').modal('show');
+    dato6 = 6;
+    
+    $.ajax({
+        url: "./funciones/funcionRubro.php",
+        type:"POST",
+        data:{dato6 : dato6},
+        cache:false,
+        success:function(resultado){
 
+          $('#IDRubroAgregar').val(resultado);
+          $('#modalNuevoRubro').modal('show');
+        }
+
+    });
   }
 
-    function modificarCliente(){
+    function modificarRubro(){
 
     dato5 = 5;
-    rutCliente = $('#rutClienteModificar').val();
-    nombreCliente = $('#nombreClienteModificar').val();
-    email = $('#emailClienteModificar').val(); 
-    contrasena = $('#contrasenaClienteModificar').val(); 
-    telefono1 = $('#telefonoClienteUnoModificar').val();
-    telefono2 = $('#telefonoClienteDosModificar').val();
-    direccion = $('#direccionclienteModificar').val();
-    rubro = $('#selectRubroClienteModificar').val();
-
-    console.log(rutCliente , nombreCliente , email, contrasena, telefono1, telefono2, direccion, rubro);
+    IDRubro = $('#idRubroModificar').val();
+    Tipo = $('#tipoRubroModificar').val();
+  
 
     $.ajax({
-        url: "./funciones/funcionClientes.php",
+        url: "./funciones/funcionRubro.php",
         type:"POST",
-        data:{dato5 : dato5, rutCliente : rutCliente, nombreCliente : nombreCliente, email : email, contrasena : contrasena, telefono1 : telefono1, telefono2 : telefono2, direccion : direccion, rubro : rubro},
+        data:{dato5 : dato5, IDRubro : IDRubro, Tipo : Tipo},
         cache:false,
         success:function(resultado){
           if(resultado == 'OK'){
-            alert("Cliente Modificado");
+            alert("Rubro Modificado");
 
             setTimeout(function(){
             location.reload(); 
@@ -320,21 +319,21 @@
 
   }
 
-  function borrarCliente($rutCliente){
+  function borrarRubro($IDRubro){
 
-    if (confirm("Seguro quieres borrar el cliente : " + $rutCliente)) {
+    if (confirm("Seguro quieres borrar el Rubro ID : " + $IDRubro)) {
       // console.log("hola");
       dato3 = 3;
-      rutCliente = $rutCliente[0];
+      IDRubro = $IDRubro[0];
 
       $.ajax({
-        url: "./funciones/funcionClientes.php",
+        url: "./funciones/funcionRubro.php",
         type:"POST",
-        data:{dato3 : dato3, rutCliente : rutCliente},
+        data:{dato3 : dato3, IDRubro : IDRubro},
         cache:false,
         success:function(resultado){
           if(resultado == 'OK'){
-            alert("cliente borrado exitosamente");
+            alert("Rubro borrado exitosamente");
             setTimeout(function(){
              location.reload(); 
               }, 1000); 
@@ -350,28 +349,23 @@
 
   }
 
-  function agregarCliente(){
+  function agregarRubro(){
 
     dato2 = 2;
-    rutCliente = $('#rutClienteAgregar').val();
-    nombreCliente = $('#nombreClienteAgregar').val();
-    email = $('#emailClienteAgregar').val(); 
-    contrasena = $('#contrasenaClienteAgregar').val(); 
-    telefono1 = $('#telefonoClienteUnoAgregar').val();
-    telefono2 = $('#telefonoClienteDosAgregar').val();
-    direccion = $('#direccionclienteAgregar').val();
-    rubro = $('#selectRubroClienteAgregar').val();
+    IDRubro = $('#IDRubroAgregar').val();
+    Tipo = $('#tipoRubroAgregar').val();
 
-
-    // console.log(rutCliente , nombreCliente , email, contrasena, telefono1, telefono2, direccion, rubro);
-
+    console.log(IDRubro ,Tipo);
+    
     $.ajax({
-        url: "./funciones/funcionClientes.php",
+        url: "./funciones/funcionRubro.php",
         type:"POST",
-        data:{dato2 : dato2, rutCliente : rutCliente, nombreCliente : nombreCliente, email : email, contrasena : contrasena, telefono1 : telefono1, telefono2 : telefono2, direccion : direccion, rubro : rubro},
+        data:{dato2 : dato2, IDRubro : IDRubro, Tipo : Tipo},
         cache:false,
         success:function(resultado){
-          alert("Cliente Agregado");
+          console.log(resultado);
+
+          alert("Rubro Agregado");
           setTimeout(function(){
            location.reload(); 
             }, 1000); 
@@ -381,24 +375,25 @@
   }
 
 
-    function buscarClientes(){
+    function buscarRubros(){
 
       dato1 = 1;
 
         $.ajax({
-            url:"./funciones/funcionClientes.php",
+            url:"./funciones/funcionRubro.php",
             type: "POST",
             data: {dato1 : dato1},
             cache: false,
             beforeSend: function () {
-                  $("#tablaClientes").html("Procesando, espere por favor...");
+                  $("#tablaRubros").html("Procesando, espere por favor...");
               },
             success: function(resultado) {
-                  $('#tablaClientes').html(resultado);
+
+                  $('#tablaRubros').html(resultado);
               },
             complete: function(){
 
-              var myTable =  $('#tablaListarClientes').DataTable( {
+              var myTable =  $('#tablaListarRubros').DataTable( {
                   'paging'      : true,
                   'lengthChange': false,
                   'searching'   : true,
