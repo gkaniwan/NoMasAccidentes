@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>No Mas Accidentes | Mantenedor Clientes</title>
+  <title>No Mas Accidentes | Mantenedor Usuarios</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 
 </head>
-<body class="hold-transition sidebar-mini" onload="buscarClientes();">
+<body class="hold-transition sidebar-mini" onload="buscarUsuarios();">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
@@ -63,7 +63,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Nombre Usuario</a>
+          <a href="#" class="d-block">Nombre Usuario Logueado</a>
         </div>
       </div>
 
@@ -92,15 +92,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="mantenedorClientes.php" class="nav-link">
+                <a href="mantenedorUsuarios.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Clientes</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="mantenedorProfesionales.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Profesionales</p>
+                  <p>Usuarios</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -140,9 +134,33 @@
                 </a>
               </li>
                <li class="nav-item">
-                <a href="mantenedorRubros.php" class="nav-link">
+                <a href="mantenedorRoles.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Rubros</p>
+                  <p>Roles</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mantenedorCapacitacion.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Capacitaciones</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mantenedorTipoActividad.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tipo Actividad</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mantenedorExtras.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Extras</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mantenedorMejora.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Mejoras</p>
                 </a>
               </li>
             </ul>
@@ -162,12 +180,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Mantenedor Clientes</h1>
+            <h1>Mantenedor Usuarios</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="inicioAdmin.php">Inicio</a></li>
-              <li class="breadcrumb-item active">Mantenedor Clientes</li>
+              <li class="breadcrumb-item active">Mantenedor Usuarios</li>
             </ol>
           </div>
         </div>
@@ -177,15 +195,12 @@
     <!-- Main content -->
     <section class="content">
 
-
-
-
        <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Clientes</h3>
+          <h3 class="card-title">Usuarios</h3>
           
           <div class="card-tools">
-            <button type="button" class="btn btn-sm btn-block btn-outline-success" onclick="verCrearCliente();">Agregar Cliente</button>
+            <button type="button" class="btn btn-sm btn-block btn-outline-success" onclick="verCrearUsuario();">Agregar Usuario</button>
             <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
               <i class="fas fa-minus"></i></button>
             <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
@@ -193,7 +208,7 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="form-group" id="tablaClientes">
+          <div class="form-group" id="tablaUsuarios">
 
             </div>
         </div>
@@ -210,8 +225,8 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <?php include('modalActualizarcliente.php');?>
-  <?php include('modalNuevoCliente.php');?>
+  <?php include('modalActualizarUsuario.php');?>
+  <?php include('modalNuevoUsuario.php');?>
 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
@@ -250,64 +265,62 @@
 
 <script>
   
-  function verActualizarCliente($rutCliente){
+  function verActualizarUsuario($rutUsuario){
 
-    console.log($rutCliente[0]);
+    console.log($rutUsuario[0]);
     dato4 = 4;
-    rutCliente = $rutCliente[0];
+    rutUsuario = $rutUsuario[0];
 
         $.ajax({
-        url: "./funciones/funcionClientes.php",
+        url: "./funciones/funcionUsuarios.php",
         type:"POST",
-        data:{dato4 : dato4, rutCliente : rutCliente},
+        data:{dato4 : dato4, rutUsuario : rutUsuario},
         dataType: 'json',
         cache:false,
         success:function(resultado){
           console.log(resultado);
-          $("#rutClienteModificar").val(resultado[0].RUTCliente);
-          $("#nombreClienteModificar").val(resultado[0].Nombre);
-          $("#direccionclienteModificar").val(resultado[0].Direccion);
-          $("#telefonoClienteUnoModificar").val(resultado[0].TelefonoUno);
-          $("#telefonoClienteDosModificar").val(resultado[0].TelefonoDos);
-          $("#emailClienteModificar").val(resultado[0].Email);
+          $("#rutUsuarioModificar").val(resultado[0].RUTCliente);
+          $("#nombreUsuarioModificar").val(resultado[0].Nombre);
+          $("#direccionUsuarioModificar").val(resultado[0].Direccion);
+          $("#telefonoUsuarioModificar").val(resultado[0].TelefonoUno);
+          $("#emailUsuarioModificar").val(resultado[0].Email);
           // $("#contrasenaClienteModificar").val(resultado[0].RUTCliente);
-          $("#selectRubroClienteModificar").val(resultado[0].IDRubro);
+          $("#selectRolUsuarioModificar").val(resultado[0].IDRubro);
 
-          $('#modalActualizarCliente').modal('show');
+          $('#modalActualizarUsuario').modal('show');
         }
 
     });
 
   }
 
-  function verCrearCliente(){
+  function verCrearUsuario(){
 
-    $('#modalNuevoCliente').modal('show');
+    $('#modalNuevoUsuario').modal('show');
 
   }
 
-    function modificarCliente(){
+    function modificarUsuario(){
 
     dato5 = 5;
-    rutCliente = $('#rutClienteModificar').val();
-    nombreCliente = $('#nombreClienteModificar').val();
-    email = $('#emailClienteModificar').val(); 
-    contrasena = $('#contrasenaClienteModificar').val(); 
-    telefono1 = $('#telefonoClienteUnoModificar').val();
-    telefono2 = $('#telefonoClienteDosModificar').val();
-    direccion = $('#direccionclienteModificar').val();
-    rubro = $('#selectRubroClienteModificar').val();
+    rutUsuario = $('#rutUsuarioModificar').val();
+    nombreUsuario = $('#nombreUsuarioModificar').val();
+    email = $('#emailUsuarioModificar').val(); 
+    contrasena = $('#contrasenaUsuarioModificar').val(); 
+    telefono1 = $('#telefonoUsuarioModificar').val();
+    direccion = $('#direccionUsuarioModificar').val();
+    rol = $('#selectRolUsuarioModificar').val();
 
-    console.log(rutCliente , nombreCliente , email, contrasena, telefono1, telefono2, direccion, rubro);
+    console.log(rutCliente , nombreCliente , email, contrasena, telefono1, telefono2, direccion, rol);
 
     $.ajax({
         url: "./funciones/funcionClientes.php",
         type:"POST",
-        data:{dato5 : dato5, rutCliente : rutCliente, nombreCliente : nombreCliente, email : email, contrasena : contrasena, telefono1 : telefono1, telefono2 : telefono2, direccion : direccion, rubro : rubro},
+        data:{dato5 : dato5, rutUsuario : rutUsuario, nombreUsuario : nombreUsuario, email : email, contrasena : contrasena, telefono1 : telefono1, telefono2 : telefono2, direccion : direccion, rol : rol},
         cache:false,
         success:function(resultado){
           if(resultado == 'OK'){
-            alert("Cliente Modificado");
+            alert("Usuario Modificado");
 
             setTimeout(function(){
             location.reload(); 
@@ -320,21 +333,21 @@
 
   }
 
-  function borrarCliente($rutCliente){
+  function borrarUsuario($rutUsuario){
 
-    if (confirm("Seguro quieres borrar el cliente : " + $rutCliente)) {
+    if (confirm("Seguro quieres borrar el Usuario : " + $rutUsuario)) {
       // console.log("hola");
       dato3 = 3;
-      rutCliente = $rutCliente[0];
+      rutUsuario = $rutUsuario[0];
 
       $.ajax({
-        url: "./funciones/funcionClientes.php",
+        url: "./funciones/funcionUsuarios.php",
         type:"POST",
-        data:{dato3 : dato3, rutCliente : rutCliente},
+        data:{dato3 : dato3, rutUsuario : rutUsuario},
         cache:false,
         success:function(resultado){
           if(resultado == 'OK'){
-            alert("cliente borrado exitosamente");
+            alert("Usuario borrado exitosamente");
             setTimeout(function(){
              location.reload(); 
               }, 1000); 
@@ -350,28 +363,27 @@
 
   }
 
-  function agregarCliente(){
+  function agregarUsuario(){
 
     dato2 = 2;
-    rutCliente = $('#rutClienteAgregar').val();
-    nombreCliente = $('#nombreClienteAgregar').val();
-    email = $('#emailClienteAgregar').val(); 
-    contrasena = $('#contrasenaClienteAgregar').val(); 
-    telefono1 = $('#telefonoClienteUnoAgregar').val();
-    telefono2 = $('#telefonoClienteDosAgregar').val();
-    direccion = $('#direccionclienteAgregar').val();
-    rubro = $('#selectRubroClienteAgregar').val();
+    rutUsuario = $('#rutUsuarioAgregar').val();
+    nombreUsuario = $('#nombreUsuarioAgregar').val();
+    email = $('#emailUsuarioAgregar').val(); 
+    contrasena = $('#contrasenaUsuarioAgregar').val(); 
+    telefono1 = $('#telefonoUsuarioAgregar').val();
+    direccion = $('#direccionUsuarioAgregar').val();
+    rol = $('#selectRolUsuarioAgregar').val();
 
 
     // console.log(rutCliente , nombreCliente , email, contrasena, telefono1, telefono2, direccion, rubro);
 
     $.ajax({
-        url: "./funciones/funcionClientes.php",
+        url: "./funciones/funcionUsuarios.php",
         type:"POST",
-        data:{dato2 : dato2, rutCliente : rutCliente, nombreCliente : nombreCliente, email : email, contrasena : contrasena, telefono1 : telefono1, telefono2 : telefono2, direccion : direccion, rubro : rubro},
+        data:{dato2 : dato2, rutUsuario : rutUsuario, nombreUsuario : nombreUsuario, email : email, contrasena : contrasena, telefono1 : telefono1, telefono2 : telefono2, direccion : direccion, rol : rol},
         cache:false,
         success:function(resultado){
-          alert("Cliente Agregado");
+          alert("Usuario Agregado");
           setTimeout(function(){
            location.reload(); 
             }, 1000); 
@@ -381,24 +393,24 @@
   }
 
 
-    function buscarClientes(){
+    function buscarUsuarios(){
 
       dato1 = 1;
 
         $.ajax({
-            url:"./funciones/funcionClientes.php",
+            url:"./funciones/funcionUsuarios.php",
             type: "POST",
             data: {dato1 : dato1},
             cache: false,
             beforeSend: function () {
-                  $("#tablaClientes").html("Procesando, espere por favor...");
+                  $("#tablaUsuarios").html("Procesando, espere por favor...");
               },
             success: function(resultado) {
-                  $('#tablaClientes').html(resultado);
+                  $('#tablaUsuarios').html(resultado);
               },
             complete: function(){
 
-              var myTable =  $('#tablaListarClientes').DataTable( {
+              var myTable =  $('#tablaListarUsuarios').DataTable( {
                   'paging'      : true,
                   'lengthChange': false,
                   'searching'   : true,

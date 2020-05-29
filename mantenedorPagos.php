@@ -169,7 +169,7 @@
             </a>
           </li>
 
-          <li class="nav-item has-treeview">
+                   <li class="nav-item has-treeview">
             <a  class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
@@ -179,15 +179,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="mantenedorClientes.php" class="nav-link">
+                <a href="mantenedorUsuarios.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Clientes</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="mantenedorProfesionales.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Profesionales</p>
+                  <p>Usuarios</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -224,6 +218,36 @@
                 <a href="mantenedorCasos.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Casos</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a href="mantenedorRoles.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Roles</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mantenedorCapacitacion.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Capacitaciones</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mantenedorTipoActividad.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tipo Actividad</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mantenedorExtras.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Extras</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mantenedorMejora.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Mejoras</p>
                 </a>
               </li>
             </ul>

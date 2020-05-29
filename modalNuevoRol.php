@@ -1,8 +1,8 @@
-      <div class="modal fade" id="modalActualizarRubro">
+      <div class="modal fade" id="modalNuevoRol">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Actualizar Rubro</h4>
+              <h4 class="modal-title">Nuevo Rol</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -12,16 +12,16 @@
             <div class="card card-info">
               <form class="form-horizontal">
                 <div class="card-body">
-                  <div class="form-group row">
-                    <label for="rutClienteModificar" class="col-sm-2 col-form-label">ID Rubro</label>
+<!--                   <div class="form-group row">
+                    <label for="IDRubroAgregar" class="col-sm-2 col-form-label">ID Rubro</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="idRubroModificar" disabled>
+                      <input type="text" class="form-control" id="IDRubroAgregar" disabled>
                     </div>
-                  </div>
+                  </div> -->
                   <div class="form-group row">
-                    <label for="rutClienteModificar" class="col-sm-2 col-form-label">Tipo Rubro</label>
+                    <label for="tipoRolAgregar" class="col-sm-2 col-form-label">Descripción Rol</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="tipoRubroModificar" placeholder="Tipo Rubro">
+                      <input type="text" class="form-control" id="tipoRolAgregar" placeholder="Descripción Rol">
                     </div>
                   </div>
                 </div>
@@ -30,7 +30,7 @@
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-success" onclick="modificarRubro();">Guardar</button>
+              <button type="button" class="btn btn-success" onclick="agregarRol();">Guardar</button>
             </div>
           </div>
         </div>
