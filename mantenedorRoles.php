@@ -63,7 +63,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Nombre Usuario</a>
+          <a href="#" class="d-block" id="NombreUsuario"></a>
         </div>
       </div>
 
@@ -279,6 +279,14 @@
 <script src="dist/js/pages/dashboard3.js"></script> -->
 
 <script>
+
+     $(document).ready(function () {  
+
+    nombreUsuario = localStorage.getItem('NOMBRE');
+    $('#NombreUsuario').html(nombreUsuario);
+      console.log(nombreUsuario);
+
+   });  
   
   function verActualizarRol($IDRol){
 
