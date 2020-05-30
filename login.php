@@ -1,3 +1,12 @@
+<?php
+  session_start();
+  // error_reporting(E_ALL);
+  // ini_set('display_errors', '1');
+
+  // if(!$_SESSION['NOMBRE']){header('Location: expirado.php');}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +45,7 @@
 
       <form action="login2.php" method="post">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="email" class="form-control" placeholder="Email" id="emailLogin">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -44,7 +53,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" class="form-control" placeholder="Password" id="passwordLogin">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -56,7 +65,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+            <button type="button" class="btn btn-primary btn-block" onclick="loguear();">Entrar</button>
           </div>
           <!-- /.col -->
         </div>
@@ -77,6 +86,50 @@
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
+
+
+<script>
+
+
+  function loguear(){
+
+    email = $('#emailLogin').val();
+    password = $('#passwordLogin').val();
+
+    // console.log(email, password);
+
+    $.ajax({
+        url: "./funciones/funcionLogin.php",
+        type:"POST",
+        data:{email : email, password : password},
+        cache:false,
+        dataType: 'json',
+        success:function(resultado){
+
+            if(JSON.stringify(resultado)=='[]') {
+                // console.log('vacio');
+                alert("Nombre de Usuario o Contraseña Incorrecto");
+            }else if(resultado[0].IDROL == 1){
+              // alert('Perfil Administrador');
+              localStorage.setItem('NOMBRE', resultado[0].NOMBRE);
+              location.href='inicioAdmin.php';
+            }else if(resultado[0].IDROL == 2){
+              // alert('perfil profesional');
+              localStorage.setItem('NOMBRE', resultado[0].NOMBRE);
+              location.href='inicioProfesional.php';
+            }else if(resultado[0].IDROL == 3){
+              // alert('perfil cliente');
+              localStorage.setItem('NOMBRE', resultado[0].NOMBRE);
+              location.href='inicioCliente.php';
+            }else{
+              alert('Nombre de Usuario o Contraseña Incorrecto');
+            }
+        }
+    });
+  }
+
+
+</script>
 
 </body>
 </html>

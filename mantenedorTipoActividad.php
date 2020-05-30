@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>No Mas Accidentes | Mantenedor Actividades</title>
+  <title>No Mas Accidentes | Mantenedor Tipo Actividad</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,8 +15,12 @@
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!-- DataTables -->
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
 </head>
-<body class="hold-transition sidebar-mini" onload="buscarActividades();">
+<body class="hold-transition sidebar-mini" onload="buscarTipoActividad();">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
@@ -26,18 +30,11 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-<!--       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li> -->
     </ul>
 
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
@@ -85,7 +82,7 @@
             </a>
           </li>
 
-                    <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview">
             <a  class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
@@ -183,12 +180,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Mantenedor Actividades</h1>
+            <h1>Mantenedor Tipo de Actividad</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="inicioAdmin.php">Inicio</a></li>
-              <li class="breadcrumb-item active">Mantenedor Actividades</li>
+              <li class="breadcrumb-item active">Mantenedor Tipo de Actividad</li>
             </ol>
           </div>
         </div>
@@ -198,49 +195,50 @@
     <!-- Main content -->
     <section class="content">
 
-        <div class="row">
-
-         <div class="col-lg-12">
-
-            <div class="card">
-              <div class="card-header border-0">
-                <h3 class="card-title">Actividades</h3>
-                <div class="card-tools">
-                  <button type="button" class="btn btn-sm btn-block btn-outline-success" onclick="verCrearActividad();">Nueva Actividad</button>
-                </div>
-              <div class="card-body">
-                  <div class="form-group" id="tablaActividades">
-                    <table class='table table-bordered table-striped display' style='width:100%' id='tablaListarActividad'>
-                            <thead>
-                              <tr>
-                                  <th>ID Actividad</th>
-                                  <th>Cliente</th>
-                                  <th>Descripción</th>
-                                  <th>Fecha</th>
-                                  <th>Tipo Actividad</th>
-                                  <th></th>
-                                  <th></th>
-                              </tr>
-                            </thead>
-                          <tbody>
-
-                            </tbody>
-                      </table>
-                  </div>
-              </div>
-            </div>
-            <!-- /.card -->
+       <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Tipo Actividad</h3>
+          
+          <div class="card-tools">
+            <button type="button" class="btn btn-sm btn-block btn-outline-success" onclick="verCrearTipoActividad();">Agregar Tipo Actividad</button>
+            <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+              <i class="fas fa-minus"></i></button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+              <i class="fas fa-times"></i></button> -->
           </div>
-          <!-- /.col-md-6 -->
         </div>
+        <div class="card-body">
+          <div class="form-group" id="tablaTipoActividades">
+              <table class='table table-bordered table-striped display' style='width:100%' id='tablaListarTipoActividad'>
+                      <thead>
+                        <tr>
+                            <th>ID Tipo Actividad</th>
+                            <th>Descripción</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                      </thead>
+                    <tbody>
+
+                      </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer" align="right">
+          <!-- <button type="button" class="btn btn-success">boton</button> -->
+        </div>
+        <!-- /.card-footer-->
+      </div>
+
 
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
-  <?php include('modalActualizarActividad.php');?>
-  <?php include('modalNuevaActividad.php');?>
+  <?php include('modalActualizarTipoActividad.php');?>
+  <?php include('modalNuevoTipoActividad.php');?>
 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
@@ -265,12 +263,21 @@
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<!-- DataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
 
+<!-- OPTIONAL SCRIPTS -->
+<!-- <script src="plugins/chart.js/Chart.min.js"></script>
+<script src="dist/js/demo.js"></script>
+<script src="dist/js/pages/dashboard3.js"></script> -->
 
 <script>
   
- function verActualizarActividad($id){
+  function verActualizarTipoActividad($id){
 
      var dato = new Object();
           dato.id = $id; 
@@ -278,18 +285,14 @@
 
 
          $.ajax({ 
-             url: 'http://localhost:8183/nomasaccidentes/actividad/'+dato.id,
+             url: 'http://localhost:8182/nomasaccidentes/tipoactividad/'+dato.id,
              type: 'GET',  
              dataType: 'json',
            success: function (data, textStatus, xhr) {  
-
-            $('#actividadIdModificar').val(data.id);
-            $('#descripcionActividadAgregar').val(data.descripcion);
-            $('#actividadFechaAgregar').val(data.fecha); 
-            $('#tipoActividadAgregar').val(data.tipoActividad);
-            $('#actividadClienteAgregar').val(data.cliente);
+              $("#idTipoActividadModificar").val(data.id);
+              $("#tipoTipoActividadModificar").val(data.descripcion);
              
-            $('#modalActualizarActividad').modal('show');
+              $('#modalActualizarTipoActividad').modal('show');
            },  
            error: function (xhr, textStatus, errorThrown) {  
                console.log('Error in Operation');  
@@ -297,24 +300,33 @@
           });
   }
 
-  function verCrearActividad(){
+  function verCrearTipoActividad(){
 
-      $('#modalNuevaActividad').modal('show');
+    // dato6 = 6;
+    
+    // $.ajax({
+    //     url: "./funciones/funcionRubro.php",
+    //     type:"POST",
+    //     data:{dato6 : dato6},
+    //     cache:false,
+    //     success:function(resultado){
 
+    //       $('#IDRubroAgregar').val(resultado);
+          $('#modalNuevoTipoActividad').modal('show');
+    //     }
+
+    // });
   }
 
-    function modificarActividad(){
+    function modificarTipoActividad(){
 
     var dato = new Object();
-    dato.id = $('#actividadIdModificar').val(); 
-    dato.descripcion = $('#descripcionActividadAgregar').val();
-    dato.fecha = $('#actividadFechaAgregar').val(); 
-    dato.tipoActividad = $('#tipoActividadAgregar').val();
-    dato.usuario = $('#actividadClienteAgregar').val();
+    dato.id = $('#idTipoActividadModificar').val(); 
+    dato.descripcion = $('#TipoActividadModificar').val(); 
     // console.log(rubro);
 
    $.ajax({  
-       url: 'http://localhost:8183/nomasaccidentes/actividad',  
+       url: 'http://localhost:8182/nomasaccidentes/tipoactividad',  
        type: 'PUT',  
        dataType: 'json',
        contentType : 'application/json',
@@ -328,16 +340,16 @@
     });
   }
 
-  function borrarActividad($id){
+  function borrarTipoActividad($id){
 
-    if (confirm("Seguro quieres borrar la actividad ID : " + $id)) {
+    if (confirm("Seguro quieres borrar el tipo actividad ID : " + $id)) {
       
           var dato = new Object();
           dato.id = $id; 
           // console.log(rubro);
 
          $.ajax({  
-             url: 'http://localhost:8183/nomasaccidentes/actividad/'+dato.id,
+             url: 'http://localhost:8182/nomasaccidentes/tipoactividad/'+dato.id,
              type: 'DELETE',  
              dataType: 'json',
              contentType : 'application/json',
@@ -355,16 +367,14 @@
     }
   }
 
-  function agregarActividad(){
+  function agregarTipoActividad(){
 
     var dato = new Object();
-    dato.descripcion = $('#descripcionActividadAgregar').val();
-    dato.fecha = $('#actividadFechaAgregar').val(); 
-    dato.tipoActividad = $('#tipoActividadAgregar').val();
-    dato.usuario = $('#actividadClienteAgregar').val();
+    dato.descripcion = $('#TipoActividadAgregar').val(); 
+    // console.log(rubro);
 
    $.ajax({  
-       url: 'http://localhost:8183/nomasaccidentes/actividad',  
+       url: 'http://localhost:8182/nomasaccidentes/tipoactividad',  
        type: 'POST',  
        dataType: 'json',
        contentType : 'application/json',
@@ -379,22 +389,19 @@
   }
 
 
-  function buscarActividades(){
+  function buscarTipoActividad(){
  
          $.ajax({  
-             url: 'http://localhost:8183/nomasaccidentes/actividad',  
+             url: 'http://localhost:8182/nomasaccidentes/tipoactividad',  
              type: 'GET',  
              dataType: 'json',
              success: function (data, textStatus, xhr) {  
                   
-                  $('#tablaListarActividad').dataTable( {
+                  $('#tablaListarTipoActividad').dataTable( {
                       data : data,
                       columns: [
                           {"data" : "id"},
-                          {"data" : "cliente"},
                           {"data" : "descripcion"},
-                          {"data" : "fecha"},
-                          {"data" : "tipoactividad"},
                           {"data": null,
                            render: function ( data, type, row ) {
                             return "<button type='button' class='btn btn-outline-info' onclick='verActualizarTipoActividad("+data.id+")';>Editar</a>";}
@@ -440,7 +447,6 @@
              }  
          });
     }
-
 </script>
 
 

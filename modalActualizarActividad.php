@@ -15,21 +15,15 @@
               <form class="form-horizontal">
                 <div class="card-body">
                   <div class="form-group row">
-                    <label for="nombreProfesionalActividad2" class="col-sm-2 col-form-label">Profesional</label>
+                    <label for="actividadIdModificar" class="col-sm-2 col-form-label">ID</label>
                     <div class="col-sm-10">
-                      <select class="form-control" id="nombreProfesionalActividad2">
-                        <option value="profesional1">Profesional 1</option>
-                        <option value="profesional2">Profesional 2</option>
-                        <option value="profesional3">Profesional 3</option>
-                        <option value="profesional4">Profesional 4</option>
-                        <option value="profesional5">Profesional 5</option>
-                      </select>
+                      <input type="text" class="form-control" id="actividadIdModificar" disabled >
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="nombreClienteActividad2" class="col-sm-2 col-form-label">Cliente</label>
+                    <label for="actividadClienteModificar" class="col-sm-2 col-form-label">Cliente</label>
                     <div class="col-sm-10">
-                      <select class="form-control" id="nombreClienteActividad2">
+                      <select class="form-control" id="actividadClienteModificar">
                         <option value="cliente1">Cliente 1</option>
                         <option value="cliente2">Cliente 2</option>
                         <option value="cliente3">Cliente 3</option>
@@ -39,15 +33,15 @@
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="fechaNuevaActividad2" class="col-sm-2 col-form-label">Fecha</label>
+                    <label for="actividadFechaModificar" class="col-sm-2 col-form-label">Fecha</label>
                     <div class="col-sm-10">
-                      <input type="date" class="form-control" id="fechaNuevaActividad2" >
+                      <input type="date" class="form-control" id="actividadFechaModificar" >
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="tipoNuevaActividad2" class="col-sm-2 col-form-label">Tipo Actividad</label>
+                    <label for="tipoActividadModificar" class="col-sm-2 col-form-label">Tipo Actividad</label>
                     <div class="col-sm-10">
-                      <select class="form-control" id="tipoNuevaActividad2">
+                      <select class="form-control" id="tipoActividadModificar">
                         <option value="visita">Visita</option>
                         <option value="capacitacion">Capacitación</option>
                         <option value="gestion">Gestión</option>
@@ -56,9 +50,9 @@
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="descripcionNuevaActividad2" class="col-sm-2 col-form-label">Descripción</label>
+                    <label for="descripcionActividadAgregar" class="col-sm-2 col-form-label">Descripción</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="descripcionNuevaActividad2" placeholder="Descripción actividad">
+                      <input type="text" class="form-control" id="descripcionActividadAgregar" placeholder="Descripción actividad">
                     </div>
                   </div>
                 </div>

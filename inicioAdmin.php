@@ -1,3 +1,11 @@
+<?php
+  session_start();
+  // error_reporting(E_ALL);
+  // ini_set('display_errors', '1');
+
+  // if(!$_SESSION['NOMBRE']){header('Location: expirado.php');}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,7 +66,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Nombre Usuario</a>
+          <a href="#" class="d-block" id='NombreUsuario'></a>
         </div>
       </div>
 
@@ -77,7 +85,7 @@
             </a>
           </li>
 
-          <li class="nav-item has-treeview">
+        <li class="nav-item has-treeview">
             <a  class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
@@ -87,15 +95,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="mantenedorClientes.php" class="nav-link">
+                <a href="mantenedorUsuarios.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Clientes</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="mantenedorProfesionales.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Profesionales</p>
+                  <p>Usuarios</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -111,27 +113,57 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="mantenedorPagos.php" class="nav-link">
+                <a href="mantenedorActividades.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Actividades</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="mantenedorPagos.php" class="nav-link">
+                <a href="mantenedorAccidentes.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Accidentes</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="mantenedorPagos.php" class="nav-link">
+                <a href="mantenedorChecklist.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Checklist</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="mantenedorPagos.php" class="nav-link">
+                <a href="mantenedorCasos.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Casos</p>
+                </a>
+              </li>
+               <li class="nav-item">
+                <a href="mantenedorRoles.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Roles</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mantenedorCapacitacion.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Capacitaciones</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mantenedorTipoActividad.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tipo Actividad</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mantenedorExtras.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Extras</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mantenedorMejora.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Mejoras</p>
                 </a>
               </li>
             </ul>
@@ -151,7 +183,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Reportes</h1>
+            <h1>Reportes Administrador</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -404,11 +436,22 @@
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 
-
-
 <!-- OPTIONAL SCRIPTS -->
 <script src="plugins/chart.js/Chart.min.js"></script>
 <script src="dist/js/demo.js"></script>
 <script src="dist/js/pages/dashboard3.js"></script>
+
+<script>
+  
+   $(document).ready(function () {  
+
+    nombreUsuario = localStorage.getItem('NOMBRE');
+    $('#NombreUsuario').html(nombreUsuario);
+      console.log(nombreUsuario);
+
+   });  
+
+ 
+</script>
 </body>
 </html>

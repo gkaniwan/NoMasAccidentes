@@ -1,3 +1,11 @@
+<?php
+  session_start();
+  // error_reporting(E_ALL);
+  // ini_set('display_errors', '1');
+
+  // if(!$_SESSION['NOMBRE']){header('Location: expirado.php');}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,7 +67,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Nombre Profesional</a>
+          <a href="#" class="d-block" id='NombreUsuario'></a>
         </div>
       </div>
 
@@ -98,7 +106,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Inicio</h1>
+            <h1>Inicio Profesional</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -215,14 +223,19 @@
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 
-<!-- OPTIONAL SCRIPTS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
-<script src="dist/js/demo.js"></script>
-<script src="dist/js/pages/dashboard3.js"></script>
 
+<script>
+  
+   $(document).ready(function () {  
 
+    nombreUsuario = localStorage.getItem('NOMBRE');
+    $('#NombreUsuario').html(nombreUsuario);
+      console.log(nombreUsuario);
 
+   });  
 
+ 
+</script>
 
 
 
