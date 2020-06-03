@@ -1,8 +1,8 @@
-      <div class="modal fade" id="modalActualizarTipoActividad">
+      <div class="modal fade" id="modalActualizarExtra">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Actualizar Tipo Actividad</h4>
+              <h4 class="modal-title">Actualizar Extra</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -13,15 +13,15 @@
               <form class="form-horizontal">
                 <div class="card-body">
                   <div class="form-group row">
-                    <label for="idTipoActividadModificar" class="col-sm-2 col-form-label">ID Tipo Actividad</label>
+                    <label for="idExtraModificar" class="col-sm-2 col-form-label">ID Extra</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="idTipoActividadModificar" disabled>
+                      <input type="text" class="form-control" id="idExtraModificar" disabled>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="TipoActividadModificar" class="col-sm-2 col-form-label">Descripción</label>
+                    <label for="tipoExtraModificar" class="col-sm-2 col-form-label">ID Actividad</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="TipoActividadModificar" placeholder="Descripción">
+                      <input type="text" class="form-control" id="tipoExtraModificar" placeholder="">
                     </div>
                   </div>
                 </div>
@@ -30,7 +30,7 @@
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-success" onclick="modificarTipoActividad();">Guardar</button>
+              <button type="button" class="btn btn-success" onclick="modificarExtra();">Guardar</button>
             </div>
           </div>
         </div>

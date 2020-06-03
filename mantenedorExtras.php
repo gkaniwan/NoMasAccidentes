@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>No Mas Accidentes | Mantenedor Usuarios</title>
+  <title>No Mas Accidentes | Mantenedor Extras</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 
 </head>
-<body class="hold-transition sidebar-mini" onload="buscarUsuarios();">
+<body class="hold-transition sidebar-mini" onload="buscarExtras();">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
@@ -63,7 +63,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Nombre Usuario Logueado</a>
+          <a href="#" class="d-block" id="NombreUsuario"></a>
         </div>
       </div>
 
@@ -180,12 +180,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Mantenedor Usuarios</h1>
+            <h1>Mantenedor Extras</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="inicioAdmin.php">Inicio</a></li>
-              <li class="breadcrumb-item active">Mantenedor Usuarios</li>
+              <li class="breadcrumb-item active">Mantenedor Extras</li>
             </ol>
           </div>
         </div>
@@ -197,10 +197,10 @@
 
        <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Usuarios</h3>
+          <h3 class="card-title">Extras</h3>
           
           <div class="card-tools">
-            <button type="button" class="btn btn-sm btn-block btn-outline-success" onclick="verCrearUsuario();">Agregar Usuario</button>
+            <button type="button" class="btn btn-sm btn-block btn-outline-success" onclick="verCrearExtra();">Agregar Extra</button>
             <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
               <i class="fas fa-minus"></i></button>
             <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
@@ -208,17 +208,13 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="form-group" id="tablaUsuarios">
-            <table class='table table-bordered table-striped display' style='width:100%' id='tablaListarUsuarios'>
+          <div class="form-group" id="tablaExtras">
+              <table class='table table-bordered table-striped display' style='width:100%' id='tablaListarExtras'>
                       <thead>
                         <tr>
-                            <th>ID Usuario</th>
-                            <th>ID Rol</th>
-                            <th>Nombre</th>
-                            <th>Rut</th>
-                            <th>EMail</th>
-                            <th>Telefono</th>
-                            <th>Dirección</th>
+                            <th>ID Extra</th>
+                            <th>ID ACTIVIDAD</th>
+                            <th>VALOR</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -227,20 +223,22 @@
 
                       </tbody>
                 </table>
-
             </div>
         </div>
+        <!-- /.card-body -->
         <div class="card-footer" align="right">
           <!-- <button type="button" class="btn btn-success">boton</button> -->
         </div>
+        <!-- /.card-footer-->
       </div>
+
     </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
 
-  </div> <!-- /.content-wrapper -->
- 
-
-  <?php include('modalActualizarUsuario.php');?>
-  <?php include('modalNuevoUsuario.php');?>
+  <?php include('modalActualizarExtra.php');?>
+  <?php include('modalNuevoExtra.php');?>
 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
@@ -279,229 +277,41 @@
 
 <script>
 
-      $(document).ready(function () {  
+    $(document).ready(function () {  
 
-        nombreUsuario = localStorage.getItem('NOMBRE');
-        $('#NombreUsuario').html(nombreUsuario);
-          console.log(nombreUsuario);
+    nombreUsuario = localStorage.getItem('NOMBRE');
+    $('#NombreUsuario').html(nombreUsuario);
+      console.log(nombreUsuario);
 
-       });  
-
-      $(document).on('click', '#cerrarModalNuevoUsuario2', function () {
-          var select = document.getElementById("selectRolUsuarioModificar");
-          var length = select.options.length;
-          for (i = length-1; i >= 0; i--) {
-            select.options[i] = null;
-          }
-      }); 
-      $(document).on('click', '#cerrarModalNuevoUsuario', function () {
-          var select = document.getElementById("selectRolUsuarioModificar");
-          var length = select.options.length;
-          for (i = length-1; i >= 0; i--) {
-            select.options[i] = null;
-          }
-      });
-
-      $(document).on('click', '#cerrarModalActualizar', function () {
-          var select = document.getElementById("selectRolUsuarioModificar");
-          var length = select.options.length;
-          for (i = length-1; i >= 0; i--) {
-            select.options[i] = null;
-          }
-      }); 
-      $(document).on('click', '#cerrarModalActualizar2', function () {
-          var select = document.getElementById("selectRolUsuarioModificar");
-          var length = select.options.length;
-          for (i = length-1; i >= 0; i--) {
-            select.options[i] = null;
-          }
-      });
-
-  
-  function verActualizarUsuario($rutUsuario){
-
-   var usuario = new Object();
-    usuario.id = $rutUsuario; 
-
-        $.ajax({  
-               url: 'http://localhost:8181/nomasaccidentes/rol',  
-               type: 'GET',  
-               dataType: 'json',
-               success: function (data, textStatus, xhr) {  
-
-                    var option = '';
-          
-                    for (var i = 0; i < data.length; i++){
-                       option += '<option value="'+ data[i].id + '">' + data[i].descripcion + '</option>';
-                    }
-                    $('#selectRolUsuarioModificar').append(option);
-
-                        $.ajax({ 
-                             url: 'http://localhost:8183/nomasaccidentes/usuario/'+usuario.id,
-                             type: 'GET',  
-                             dataType: 'json',
-                           success: function (data, textStatus, xhr) {  
-                              $("#IdUsuarioModificar").val(data.id);
-                              $("#selectRolUsuarioModificar").val(data.idRol);
-                              $("#nombreUsuarioModificar").val(data.nombre);
-                              $("#rutUsuarioModificar").val(data.rut);
-                              $("#emailUsuarioModificar").val(data.mail);
-                              $("#telefonoUsuarioModificar").val(data.telefono);
-                              $("#direccionUsuarioModificar").val(data.direccion);
-
-                              $('#modalActualizarUsuarios').modal('show');
-
-                           },  
-                           error: function (xhr, textStatus, errorThrown) {  
-                               console.log('Error in Operation');  
-                           }  
-                          });
-
-                   },
-               error: function (xhr, textStatus, errorThrown) {  
-                   console.log('Error in Operation');  
-               }  
-           });
-  }
-
-  function verCrearUsuario(){
-
-          $.ajax({  
-             url: 'http://localhost:8181/nomasaccidentes/rol',  
-             type: 'GET',  
-             dataType: 'json',
-             success: function (data, textStatus, xhr) {  
-
-              var option = '';
-    
-              for (var i = 0; i < data.length; i++){
-                 option += '<option value="'+ data[i].id + '">' + data[i].descripcion + '</option>';
-              }
-              $('#selectRolUsuarioAgregar').append(option);
-                  
-                    console.log(data);
-
-                 },
-             error: function (xhr, textStatus, errorThrown) {  
-                 console.log('Error in Operation');  
-             }  
-         });
-
-    $('#modalNuevoUsuario').modal('show');
-
-  }
+   });  
 
 
-  function modificarUsuario(){
+    function buscarExtras(){
 
-    var usuario = new Object();
-    usuario.id = $('#IdUsuarioModificar').val(); 
-    usuario.idRol = $("#selectRolUsuarioModificar").val();
-    usuario.nombre = $("#nombreUsuarioModificar").val();
-    usuario.rut = $("#rutUsuarioModificar").val();
-    usuario.mail = $("#emailUsuarioModificar").val();
-    usuario.telefono = $("#telefonoUsuarioModificar").val();
-    usuario.direccion = $("#direccionUsuarioModificar").val();
-    usuario.password = $("#contrasenaUsuarioModificar").val();
+      dato1 = 1;
 
-    console.log(usuario);
+        $.ajax({
+            url:"./funciones/funcionExtras.php",
+            type: "POST",
+            data: {dato1 : dato1},
+            cache: false,
+            dataType: 'json',
+            success: function(data){
+              console.log(data);
 
-   $.ajax({  
-       url: 'http://localhost:8183/nomasaccidentes/usuario',  
-       type: 'PUT',  
-       dataType: 'json',
-       contentType : 'application/json',
-       data: JSON.stringify(usuario),
-     success: function (data, textStatus, xhr) {  
-         location.reload();
-     },  
-     error: function (xhr, textStatus, errorThrown) {  
-         console.log('Error in Operation');  
-     }  
-    });
-  }
-
-  function borrarUsuario($idUsuario){
-
-    if (confirm("Seguro quieres borrar el Rol ID : " + $idUsuario)) {
-      
-          var usuario = new Object();
-          usuario.id = $idUsuario; 
-          // console.log(rubro);
-
-         $.ajax({  
-             url: 'http://localhost:8183/nomasaccidentes/usuario/'+usuario.id,
-             type: 'DELETE',  
-             dataType: 'json',
-             contentType : 'application/json',
-             data: JSON.stringify(usuario),
-           success: function (data, textStatus, xhr) {  
-               location.reload();
-           },  
-           error: function (xhr, textStatus, errorThrown) {  
-               console.log('Error in Operation');  
-           }  
-          });
-
-    } else {
-    return false;
-    }
-
-  }
-
-    function agregarUsuario(){
-
-    var usuario = new Object();
-    usuario.rut = $('#rutUsuarioAgregar').val(); 
-    usuario.direccion = $('#direccionUsuarioAgregar').val(); 
-    usuario.mail = $('#emailUsuarioAgregar').val(); 
-    usuario.nombre = $('#nombreUsuarioAgregar').val(); 
-    usuario.password = $('#contrasenaUsuarioAgregar').val(); 
-    usuario.idRol = $('#selectRolUsuarioAgregar').val(); 
-    usuario.telefono = $('#telefonoUsuarioAgregar').val(); 
-    // console.log(rubro);
-
-   $.ajax({  
-       url: 'http://localhost:8183/nomasaccidentes/usuario',  
-       type: 'POST',  
-       dataType: 'json',
-       contentType : 'application/json',
-       data: JSON.stringify(usuario),
-     success: function (data, textStatus, xhr) {  
-         location.reload();
-     },  
-     error: function (xhr, textStatus, errorThrown) {  
-         console.log('Error in Operation');  
-     }  
-    });
-  }
-
-
-  function buscarUsuarios(){
- 
-         $.ajax({  
-             url: 'http://localhost:8183/nomasaccidentes/usuario',  
-             type: 'GET',  
-             dataType: 'json',
-             success: function (data, textStatus, xhr) {  
-                  
-                  $('#tablaListarUsuarios').dataTable( {
+              $('#tablaListarExtras').dataTable( {
                       data : data,
                       columns: [
-                          {"data" : "id"},
-                          {"data" : "idRol"},
-                          {"data" : "nombre"},
-                          {"data" : "rut"},
-                          {"data" : "mail"},
-                          {"data" : "telefono"},
-                          {"data" : "direccion"},
+                          {"data" : "ID"},
+                          {"data" : "IDACTIVIDAD"},
+                          {"data" : "VALOR"},
                           {"data": null,
                            render: function ( data, type, row ) {
-                            return "<button type='button' class='btn btn-outline-info' onclick='verActualizarUsuario("+data.id+")';>Editar</a>";}
+                            return "<button type='button' class='btn btn-outline-info' onclick='verActualizarRol("+data.id+")';>Editar</a>";}
                           },
                           {"data": null,
                            render: function ( data, type, row ) {
-                              return '<button type="button" class="btn btn-outline-danger" onclick="borrarUsuario('+data.id+')";>Eliminar</a>';}
+                              return '<button type="button" class="btn btn-outline-danger" onclick="borrarRol('+data.id+')";>Eliminar</a>';}
                           }
                         ],
                         'paging'      : true,
@@ -540,8 +350,166 @@
              }  
          });
     }
+  
+  // function verActualizarExtra($IDExtra){
 
-         
+  //    var extra = new Object();
+  //         extra.id = $IDExtra; 
+
+
+  //        $.ajax({ 
+  //            url: 'http://localhost:8185/nomasaccidentes/extra/'+extra.id,
+  //            type: 'GET',  
+  //            dataType: 'json',
+  //          success: function (data, textStatus, xhr) {  
+  //             // $("#idExtraModificar").val(data.id);
+  //             // $("#tipoRolModificar").val(data.descripcion);
+             
+  //             $('#modalActualizarExtra').modal('show');
+  //          },  
+  //          error: function (xhr, textStatus, errorThrown) {  
+  //              console.log('Error in Operation');  
+  //          }  
+  //         });
+  // }
+
+  function verCrearExtra(){
+
+
+        
+
+          $('#modalNuevoExtra').modal('show');
+  }
+
+  // function modificarExtra(){
+
+  //   var extra = new Object();
+  //   extra.id = $('#idExtraModificar').val(); 
+  //   extra.descripcion = $('#tipoExtraModificar').val(); 
+
+  //  $.ajax({  
+  //      url: 'http://localhost:8185/nomasaccidentes/extra',  
+  //      type: 'PUT',  
+  //      dataType: 'json',
+  //      contentType : 'application/json',
+  //      data: JSON.stringify(extra),
+  //    success: function (data, textStatus, xhr) {  
+  //        location.reload();
+  //    },  
+  //    error: function (xhr, textStatus, errorThrown) {  
+  //        console.log('Error in Operation');  
+  //    }  
+  //   });
+  // }
+
+  // function borrarExtra($IDExtra){
+
+  //   if (confirm("Seguro quieres borrar el extra ID : " + $IDExtra)) {
+      
+  //         var extra = new Object();
+  //         extra.id = $IDExtra; 
+  //         // console.log(rubro);
+
+  //        $.ajax({  
+  //            url: 'http://localhost:8185/nomasaccidentes/rol/'+extra.id,
+  //            type: 'DELETE',  
+  //            dataType: 'json',
+  //            contentType : 'application/json',
+  //            data: JSON.stringify(extra),
+  //          success: function (data, textStatus, xhr) {  
+  //              location.reload();
+  //          },  
+  //          error: function (xhr, textStatus, errorThrown) {  
+  //              console.log('Error in Operation');  
+  //          }  
+  //         });
+
+  //   } else {
+  //   return false;
+  //   }
+  // }
+
+  // function agregarExtra(){
+
+  //   var extra = new Object();
+  //   // extra.descripcion = $('#ExtraAgregar').val(); 
+  //   // console.log(rubro);
+
+  //  $.ajax({  
+  //      url: 'http://localhost:8185/nomasaccidentes/extra',  
+  //      type: 'POST',  
+  //      dataType: 'json',
+  //      contentType : 'application/json',
+  //      data: JSON.stringify(extra),
+  //    success: function (data, textStatus, xhr) {  
+  //        location.reload();
+  //    },  
+  //    error: function (xhr, textStatus, errorThrown) {  
+  //        console.log('Error in Operation');  
+  //    }  
+  //   });
+  // }
+
+  // function buscarExtras(){
+ 
+  //        $.ajax({  
+  //            url: 'http://localhost:8185/nomasaccidentes/extra',  
+  //            type: 'GET',  
+  //            dataType: 'json',
+  //            success: function (data, textStatus, xhr) {  
+                  
+  //                 $('#tablaListarExtras').dataTable( {
+  //                     data : data,
+  //                     columns: [
+  //                         {"data" : "id"},
+  //                         {"data" : "idactividad"},
+  //                         {"data" : "valor"},
+  //                         {"data": null,
+  //                          render: function ( data, type, row ) {
+  //                           return "<button type='button' class='btn btn-outline-info' onclick='verActualizarRol("+data.id+")';>Editar</a>";}
+  //                         },
+  //                         {"data": null,
+  //                          render: function ( data, type, row ) {
+  //                             return '<button type="button" class="btn btn-outline-danger" onclick="borrarRol('+data.id+')";>Eliminar</a>';}
+  //                         }
+  //                       ],
+  //                       'paging'      : true,
+  //                       'lengthChange': false,
+  //                       'searching'   : true,
+  //                       'ordering'    : true,
+  //                       'info'        : true,
+  //                       'autoWidth'   : true,
+  //                       "language": {   
+  //                         "sProcessing":     "Procesando...",
+  //                         "sLengthMenu":     "Mostrar _MENU_ registros",
+  //                         "sZeroRecords":    "No se encontraron resultados",
+  //                         "sEmptyTable":     "Ningún dato disponible en esta tabla",
+  //                         "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+  //                         "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+  //                         "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+  //                         "sInfoPostFix":    "",
+  //                         "sSearch":         "Buscar:",
+  //                         "sUrl":            "",
+  //                         "sInfoThousands":  ",",
+  //                         "sLoadingRecords": "Cargando...",
+  //                         "oPaginate": { "sFirst":    "Primero",
+  //                                        "sLast":     "Último",
+  //                                        "sNext":     "Siguiente",
+  //                                        "sPrevious": "Anterior" },
+  //                         "oAria": { "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+  //                                    "sSortDescending": ": Activar para ordenar la columna de manera descendente" },
+  //                         "buttons": { "copy": "Copiar",
+  //                                      "colvis": "Visibilidad" }
+  //                       }
+  //                   });
+  //                  // console.log(data);  
+  //              },  
+  //            error: function (xhr, textStatus, errorThrown) {  
+  //                console.log('Error in Operation');  
+  //            }  
+  //        });
+  //   }
+
 </script>
 
 

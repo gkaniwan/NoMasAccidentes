@@ -72,7 +72,7 @@
       </form>
 
       <p class="mb-1">
-        <a href="recuperarPassword.php">Olvide mi password</a>
+        <!-- <a href="recuperarPassword.php">Olvide mi password</a> -->
       </p>
     </div>
     <!-- /.login-card-body -->

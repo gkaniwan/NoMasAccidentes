@@ -63,7 +63,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Nombre Usuario logueado</a>
+          <a href="#" class="d-block" id="NombreUsuario"></a>
         </div>
       </div>
 
@@ -194,17 +194,11 @@
 
     <!-- Main content -->
     <section class="content">
-
        <div class="card">
         <div class="card-header">
           <h3 class="card-title">Tipo Actividad</h3>
-          
           <div class="card-tools">
             <button type="button" class="btn btn-sm btn-block btn-outline-success" onclick="verCrearTipoActividad();">Agregar Tipo Actividad</button>
-            <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fas fa-times"></i></button> -->
           </div>
         </div>
         <div class="card-body">
@@ -218,24 +212,21 @@
                             <th></th>
                         </tr>
                       </thead>
-                    <tbody>
+                      <tbody>
 
                       </tbody>
                 </table>
             </div>
         </div>
-        <!-- /.card-body -->
         <div class="card-footer" align="right">
           <!-- <button type="button" class="btn btn-success">boton</button> -->
         </div>
-        <!-- /.card-footer-->
+
       </div>
-
-
     </section>
-    <!-- /.content -->
+
   </div>
-  <!-- /.content-wrapper -->
+
 
   <?php include('modalActualizarTipoActividad.php');?>
   <?php include('modalNuevoTipoActividad.php');?>
@@ -276,13 +267,20 @@
 <script src="dist/js/pages/dashboard3.js"></script> -->
 
 <script>
+
+        $(document).ready(function () {  
+
+        nombreUsuario = localStorage.getItem('NOMBRE');
+        $('#NombreUsuario').html(nombreUsuario);
+          console.log(nombreUsuario);
+
+       });
   
   function verActualizarTipoActividad($id){
 
      var dato = new Object();
-          dato.id = $id; 
-          console.log(dato);
-
+      dato.id = $id; 
+      console.log(dato);
 
          $.ajax({ 
              url: 'http://localhost:8182/nomasaccidentes/tipoactividad/'+dato.id,
@@ -290,7 +288,7 @@
              dataType: 'json',
            success: function (data, textStatus, xhr) {  
               $("#idTipoActividadModificar").val(data.id);
-              $("#tipoTipoActividadModificar").val(data.descripcion);
+              $("#TipoActividadModificar").val(data.descripcion);
              
               $('#modalActualizarTipoActividad').modal('show');
            },  
@@ -346,7 +344,6 @@
       
           var dato = new Object();
           dato.id = $id; 
-          // console.log(rubro);
 
          $.ajax({  
              url: 'http://localhost:8182/nomasaccidentes/tipoactividad/'+dato.id,
@@ -371,7 +368,6 @@
 
     var dato = new Object();
     dato.descripcion = $('#TipoActividadAgregar').val(); 
-    // console.log(rubro);
 
    $.ajax({  
        url: 'http://localhost:8182/nomasaccidentes/tipoactividad',  

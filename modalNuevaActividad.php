@@ -3,7 +3,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title">Nueva Actividad</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="cerrarModalNueva2">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -15,14 +15,18 @@
               <form class="form-horizontal">
                 <div class="card-body">
                   <div class="form-group row">
-                    <label for="actividadClienteAgregar" class="col-sm-2 col-form-label">cliente</label>
+                    <label for="actividadClienteAgregar" class="col-sm-2 col-form-label">Cliente</label>
                     <div class="col-sm-10">
                       <select class="form-control" id="actividadClienteAgregar">
-                        <option value="cliente1">Cliente 1</option>
-                        <option value="cliente2">Cliente 2</option>
-                        <option value="cliente3">Cliente 3</option>
-                        <option value="cliente4">Cliente 4</option>
-                        <option value="cliente5">Cliente 5</option>
+                        
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="actividadProfesionalAgregar" class="col-sm-2 col-form-label">Profesional</label>
+                    <div class="col-sm-10">
+                      <select class="form-control" id="actividadProfesionalAgregar">
+                        
                       </select>
                     </div>
                   </div>
@@ -36,10 +40,7 @@
                     <label for="tipoActividadAgregar" class="col-sm-2 col-form-label">Tipo Actividad</label>
                     <div class="col-sm-10">
                       <select class="form-control" id="tipoActividadAgregar">
-                        <option value="visita">Visita</option>
-                        <option value="capacitacion">Capacitación</option>
-                        <option value="gestion">Gestión</option>
-                        <option value="asesoriaEspecial">Asesoria Especial</option>
+
                       </select>
                     </div>
                   </div>
@@ -57,8 +58,8 @@
               
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-success">Guardar</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="cerrarModalNueva">Cerrar</button>
+              <button type="button" class="btn btn-success" onclick="agregarActividad();">Guardar</button>
             </div>
           </div>
           <!-- /.modal-content -->

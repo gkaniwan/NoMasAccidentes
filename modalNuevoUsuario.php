@@ -3,7 +3,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title">Nuevo Usuario</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="cerrarModalNuevoUsuario2">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -51,10 +51,8 @@
                   <div class="form-group row">
                     <label for="selectRolUsuarioAgregar" class="col-sm-2 col-form-label">Rubro</label>
                     <div class="col-sm-10">
-                      <select class="form-contro" id="selectRolUsuarioAgregar">
-                        <option value="1">Administrador</option>
-                        <option value="2">Profesional</option>
-                        <option value="3">Cliente</option>
+                      <select class="form-control" id="selectRolUsuarioAgregar">
+
                       </select>
                     </div>
                   </div>
@@ -63,7 +61,7 @@
             </div>
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="cerrarModalNuevoUsuario">Cerrar</button>
               <button type="button" class="btn btn-success" onclick="agregarUsuario();">Guardar</button>
             </div>
           </div>

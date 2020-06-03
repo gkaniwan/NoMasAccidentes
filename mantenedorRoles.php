@@ -195,9 +195,6 @@
     <!-- Main content -->
     <section class="content">
 
-
-
-
        <div class="card">
         <div class="card-header">
           <h3 class="card-title">Roles</h3>
@@ -233,7 +230,6 @@
         </div>
         <!-- /.card-footer-->
       </div>
-
 
     </section>
     <!-- /.content -->
@@ -280,7 +276,7 @@
 
 <script>
 
-     $(document).ready(function () {  
+    $(document).ready(function () {  
 
     nombreUsuario = localStorage.getItem('NOMBRE');
     $('#NombreUsuario').html(nombreUsuario);

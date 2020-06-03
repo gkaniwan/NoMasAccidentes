@@ -15,27 +15,27 @@
               <form class="form-horizontal">
                 <div class="card-body">
                   <div class="form-group row">
-                    <label for="nombreCliente" class="col-sm-2 col-form-label">Nombre Cliente</label>
+                    <label for="nombreClienteActualizar" class="col-sm-2 col-form-label">Nombre Cliente</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="nombreCliente" placeholder="Nombre Cliente">
+                      <input type="text" class="form-control" id="nombreClienteActualizar" placeholder="Nombre Cliente">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="rutEmpresa" class="col-sm-2 col-form-label">Fecha Inicio</label>
+                    <label for="fechaInicioActualizar" class="col-sm-2 col-form-label">Fecha Inicio</label>
                     <div class="col-sm-10">
-                      <input type="date" class="form-control" id="rutEmpresa" disabled>
+                      <input type="date" class="form-control" id="fechaInicioActualizar" disabled>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="direccioncliente" class="col-sm-2 col-form-label">Precio</label>
+                    <label for="precioActualizar" class="col-sm-2 col-form-label">Precio</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="direccioncliente" placeholder="Precio">
+                      <input type="text" class="form-control" id="precioActualizar" placeholder="Precio">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="telefonoCliente" class="col-sm-2 col-form-label">Descripción</label>
+                    <label for="descripcionActualizar" class="col-sm-2 col-form-label">Descripción</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="telefonoCliente" placeholder="Descripción">
+                      <input type="text" class="form-control" id="descripcionActualizar" placeholder="Descripción">
                     </div>
                   </div>
                 </div>
