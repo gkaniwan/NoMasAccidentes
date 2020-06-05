@@ -289,6 +289,94 @@
           }
       });
 
+        $(document).on('click', '#cerrarModalActualizarContrato2', function () {
+          var select = document.getElementById("nombreClienteActualizar");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+      });
+
+        $(document).on('click', '#cerrarModalActualizarContrato', function () {
+          var select = document.getElementById("nombreClienteActualizar");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+      });
+
+  function modificarContrato(){
+
+      var dato = new Object();
+      dato.id = $('#IDContratoActualizar').val();
+      dato.descripcion = $('#descripcionActualizar').val();
+      dato.fechaInicio = $('#fechaInicioActualizar').val(); 
+      dato.idUsuarioCliente = $('#nombreClienteActualizar').val();
+      dato.valor = $('#precioActualizar').val();
+
+       $.ajax({  
+               url: 'http://localhost:8187/nomasaccidentes/contrato',  
+               type: 'PUT',  
+               dataType: 'json',
+               contentType : 'application/json',
+               data: JSON.stringify(dato),
+         success: function (data, textStatus, xhr) {  
+             location.reload();
+         },  
+         error: function (xhr, textStatus, errorThrown) {  
+             console.log('Error in Operation');  
+         }  
+        });
+  }
+
+
+  function verActualizarContrato($id){
+
+    var dato = new Object();
+    dato.id = $id; 
+
+          $.ajax({  
+               url: 'http://localhost:8183/nomasaccidentes/usuario/getByRol/3',  
+               type: 'GET',  
+               dataType: 'json',
+               success: function (data, textStatus, xhr) {  
+
+                var option = '';
+
+                for (var i = 0; i < data.length; i++){
+                   option += '<option value="'+ data[i].id + '">' + data[i].nombre + '</option>';
+                }
+                    
+                    $('#nombreClienteActualizar').append(option);
+
+                   },
+               error: function (xhr, textStatus, errorThrown) {  
+                   console.log('Error in Operation');  
+               }  
+           });
+
+          
+           $.ajax({ 
+               url: 'http://localhost:8187/nomasaccidentes/contrato/'+dato.id,
+               type: 'GET',  
+               dataType: 'json',
+              success: function (data, textStatus, xhr) { 
+
+                $('#IDContratoActualizar').val(data.id);
+                $('#nombreClienteActualizar').val(data.idUsuarioCliente);
+                $('#fechaInicioActualizar').val(data.fechaInicio);
+                $('#precioActualizar').val(data.valor);
+                $('#descripcionActualizar').val(data.descripcion);
+
+                $('#modalActualizarContrato').modal('show');
+             },  
+           error: function (xhr, textStatus, errorThrown) {  
+               console.log('Error in Operation');  
+           }  
+          });
+
+  }
+
 
   function borrarContrato($id){
 

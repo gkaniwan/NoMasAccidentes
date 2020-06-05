@@ -3,7 +3,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title">Nuevo Pago</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="cerrarModalNuevoPago">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -15,27 +15,23 @@
               <form class="form-horizontal">
                 <div class="card-body">
                   <div class="form-group row">
-                    <label for="contratoPago" class="col-sm-2 col-form-label">Contrato</label>
+                    <label for="idContratoNuevoPago" class="col-sm-2 col-form-label">Contrato</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="contratoPago" placeholder="Contrato">
+                      <select class="form-control" id="idContratoNuevoPago">
+                        
+                      </select>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="fechaPago" class="col-sm-2 col-form-label">Fecha Pago</label>
+                    <label for="fechaNuevoPago" class="col-sm-2 col-form-label">Fecha Pago</label>
                     <div class="col-sm-10">
-                      <input type="date" class="form-control" id="fechaPago">
+                      <input type="date" class="form-control" id="fechaNuevoPago">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="valorPago" class="col-sm-2 col-form-label">Valor</label>
+                    <label for="detalleNuevoPago" class="col-sm-2 col-form-label">Detalle</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="valorPago" placeholder="Precio">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="detallePago" class="col-sm-2 col-form-label">Detalle</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="detallePago" placeholder="Detalle pago">
+                      <input type="text" class="form-control" id="detalleNuevoPago" placeholder="Detalle pago">
                     </div>
                   </div>
                 </div>
@@ -46,8 +42,8 @@
               
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-success">Guardar</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="cerrarModalNuevoPago2">Cerrar</button>
+              <button type="button" class="btn btn-success" onclick="agregarPago();">Guardar</button>
             </div>
           </div>
           <!-- /.modal-content -->

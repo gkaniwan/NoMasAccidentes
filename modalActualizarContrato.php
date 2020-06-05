@@ -3,7 +3,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title">Actualizar Contrato</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="cerrarModalActualizarContrato2">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -15,15 +15,23 @@
               <form class="form-horizontal">
                 <div class="card-body">
                   <div class="form-group row">
+                    <label for="IDContratoActualizar" class="col-sm-2 col-form-label">ID Contrato</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="IDContratoActualizar" placeholder="" disabled>
+                    </div>
+                  </div>
+                  <div class="form-group row">
                     <label for="nombreClienteActualizar" class="col-sm-2 col-form-label">Nombre Cliente</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="nombreClienteActualizar" placeholder="Nombre Cliente">
+                      <select class="form-control" id="nombreClienteActualizar">
+                        
+                      </select>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="fechaInicioActualizar" class="col-sm-2 col-form-label">Fecha Inicio</label>
                     <div class="col-sm-10">
-                      <input type="date" class="form-control" id="fechaInicioActualizar" disabled>
+                      <input type="date" class="form-control" id="fechaInicioActualizar">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -46,8 +54,8 @@
               
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-success">Guardar</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="cerrarModalActualizarContrato">Cerrar</button>
+              <button type="button" class="btn btn-success" onclick="modificarContrato();">Guardar</button>
             </div>
           </div>
           <!-- /.modal-content -->

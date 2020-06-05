@@ -524,8 +524,6 @@
 
   function modificarActividad(){
 
-
-
     idCliente = $('#actividadClienteModificar').val();
 
     $.ajax({  

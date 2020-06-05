@@ -285,33 +285,199 @@
 
    });  
 
+      $(document).on('click', '#cerrarModalNuevoExtra2', function () {
+          var select = document.getElementById("nuevoExtraActividad");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+      });
 
-    function buscarExtras(){
+        $(document).on('click', '#cerrarModalNuevoExtra', function () {
+          var select = document.getElementById("nuevoExtraActividad");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+      });
 
-      dato1 = 1;
+        $(document).on('click', '#cerrarModalActualizarExtra2', function () {
+          var select = document.getElementById("actualizarExtraActividad");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+      });
 
-        $.ajax({
-            url:"./funciones/funcionExtras.php",
-            type: "POST",
-            data: {dato1 : dato1},
-            cache: false,
-            dataType: 'json',
-            success: function(data){
-              console.log(data);
+        $(document).on('click', '#cerrarModalActualizarExtra', function () {
+          var select = document.getElementById("actualizarExtraActividad");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+      });
 
-              $('#tablaListarExtras').dataTable( {
+  
+  function verActualizarExtra($IDExtra){
+
+     var extra = new Object();
+     extra.id = $IDExtra; 
+
+          $.ajax({  
+               url: 'http://localhost:8184/nomasaccidentes/actividad',  
+               type: 'GET',  
+               dataType: 'json',
+               success: function (data, textStatus, xhr) {  
+
+                var option = '';
+
+                for (var i = 0; i < data.length; i++){
+                   option += '<option value="'+ data[i].id + '">' + data[i].descripcionActividad + '</option>';
+                }
+                    
+                    $('#actualizarExtraActividad').append(option);
+
+                   },
+               error: function (xhr, textStatus, errorThrown) {  
+                   console.log('Error in Operation');  
+               }  
+           });
+
+         $.ajax({ 
+             url: 'http://localhost:8185/nomasaccidentes/extras/'+extra.id,
+             type: 'GET',  
+             dataType: 'json',
+           success: function (data, textStatus, xhr) {  
+
+              $("#idExtraModificar").val(data.id);
+              $("#actualizarExtraActividad").val(data.idActividad);
+              $("#valorExtraActualizar").val(data.valor);
+             
+              $('#modalActualizarExtra').modal('show');
+           },  
+           error: function (xhr, textStatus, errorThrown) {  
+               console.log('Error in Operation');  
+           }  
+          });
+  }
+
+
+
+  function modificarExtra(){
+
+    var extra = new Object();
+    extra.id = $('#idExtraModificar').val(); 
+    extra.idActividad = $('#actualizarExtraActividad').val(); 
+    extra.valor = $('#valorExtraActualizar').val(); 
+
+   $.ajax({  
+       url: 'http://localhost:8185/nomasaccidentes/extras',  
+       type: 'PUT',  
+       dataType: 'json',
+       contentType : 'application/json',
+       data: JSON.stringify(extra),
+     success: function (data, textStatus, xhr) {  
+         location.reload();
+     },  
+     error: function (xhr, textStatus, errorThrown) {  
+         console.log('Error in Operation');  
+     }  
+    });
+  }
+
+  function borrarExtra($IDExtra){
+
+    if (confirm("Seguro quieres borrar el extra ID : " + $IDExtra)) {
+      
+          var extra = new Object();
+          extra.id = $IDExtra; 
+          // console.log(rubro);
+
+         $.ajax({  
+             url: 'http://localhost:8185/nomasaccidentes/extras/'+extra.id,
+             type: 'DELETE',  
+             dataType: 'json',
+             contentType : 'application/json',
+             data: JSON.stringify(extra),
+           success: function (data, textStatus, xhr) {  
+               location.reload();
+           },  
+           error: function (xhr, textStatus, errorThrown) {  
+               console.log('Error in Operation');  
+           }  
+          });
+
+    } else {
+    return false;
+    }
+  }
+
+  function verCrearExtra(){
+
+      $.ajax({  
+             url: 'http://localhost:8184/nomasaccidentes/actividad',  
+             type: 'GET',  
+             dataType: 'json',
+             success: function (data, textStatus, xhr) {  
+
+                  var option = '';
+        
+                  for (var i = 0; i < data.length; i++){
+                     option += '<option value="'+ data[i].id + '">' + data[i].descripcionActividad + '</option>';
+                  }
+                  $('#nuevoExtraActividad').append(option);
+
+              },
+              error: function (xhr, textStatus, errorThrown) {  
+                 console.log('Error in Operation');  
+             }  
+         });
+
+          $('#modalNuevoExtra').modal('show');
+  }
+
+  function agregarExtra(){
+
+    var extra = new Object();
+    extra.idActividad = $('#nuevoExtraActividad').val();
+    extra.valor = $('#valorExtraAgregar').val();
+
+   $.ajax({  
+       url: 'http://localhost:8185/nomasaccidentes/extras',  
+       type: 'POST',  
+       dataType: 'json',
+       contentType : 'application/json',
+       data: JSON.stringify(extra),
+     success: function (data, textStatus, xhr) {  
+         location.reload();
+     },  
+     error: function (xhr, textStatus, errorThrown) {  
+         console.log('Error in Operation');  
+     }  
+    });
+  }
+
+  function buscarExtras(){
+ 
+         $.ajax({  
+             url: 'http://localhost:8185/nomasaccidentes/extras',  
+             type: 'GET',  
+             dataType: 'json',
+             success: function (data, textStatus, xhr) {  
+                  
+                  $('#tablaListarExtras').dataTable( {
                       data : data,
                       columns: [
-                          {"data" : "ID"},
-                          {"data" : "IDACTIVIDAD"},
-                          {"data" : "VALOR"},
+                          {"data" : "id"},
+                          {"data" : "idActividad"},
+                          {"data" : "valor"},
                           {"data": null,
                            render: function ( data, type, row ) {
-                            return "<button type='button' class='btn btn-outline-info' onclick='verActualizarRol("+data.id+")';>Editar</a>";}
+                            return "<button type='button' class='btn btn-outline-info' onclick='verActualizarExtra("+data.id+")';>Editar</a>";}
                           },
                           {"data": null,
                            render: function ( data, type, row ) {
-                              return '<button type="button" class="btn btn-outline-danger" onclick="borrarRol('+data.id+')";>Eliminar</a>';}
+                              return '<button type="button" class="btn btn-outline-danger" onclick="borrarExtra('+data.id+')";>Eliminar</a>';}
                           }
                         ],
                         'paging'      : true,
@@ -350,165 +516,6 @@
              }  
          });
     }
-  
-  // function verActualizarExtra($IDExtra){
-
-  //    var extra = new Object();
-  //         extra.id = $IDExtra; 
-
-
-  //        $.ajax({ 
-  //            url: 'http://localhost:8185/nomasaccidentes/extra/'+extra.id,
-  //            type: 'GET',  
-  //            dataType: 'json',
-  //          success: function (data, textStatus, xhr) {  
-  //             // $("#idExtraModificar").val(data.id);
-  //             // $("#tipoRolModificar").val(data.descripcion);
-             
-  //             $('#modalActualizarExtra').modal('show');
-  //          },  
-  //          error: function (xhr, textStatus, errorThrown) {  
-  //              console.log('Error in Operation');  
-  //          }  
-  //         });
-  // }
-
-  function verCrearExtra(){
-
-
-        
-
-          $('#modalNuevoExtra').modal('show');
-  }
-
-  // function modificarExtra(){
-
-  //   var extra = new Object();
-  //   extra.id = $('#idExtraModificar').val(); 
-  //   extra.descripcion = $('#tipoExtraModificar').val(); 
-
-  //  $.ajax({  
-  //      url: 'http://localhost:8185/nomasaccidentes/extra',  
-  //      type: 'PUT',  
-  //      dataType: 'json',
-  //      contentType : 'application/json',
-  //      data: JSON.stringify(extra),
-  //    success: function (data, textStatus, xhr) {  
-  //        location.reload();
-  //    },  
-  //    error: function (xhr, textStatus, errorThrown) {  
-  //        console.log('Error in Operation');  
-  //    }  
-  //   });
-  // }
-
-  // function borrarExtra($IDExtra){
-
-  //   if (confirm("Seguro quieres borrar el extra ID : " + $IDExtra)) {
-      
-  //         var extra = new Object();
-  //         extra.id = $IDExtra; 
-  //         // console.log(rubro);
-
-  //        $.ajax({  
-  //            url: 'http://localhost:8185/nomasaccidentes/rol/'+extra.id,
-  //            type: 'DELETE',  
-  //            dataType: 'json',
-  //            contentType : 'application/json',
-  //            data: JSON.stringify(extra),
-  //          success: function (data, textStatus, xhr) {  
-  //              location.reload();
-  //          },  
-  //          error: function (xhr, textStatus, errorThrown) {  
-  //              console.log('Error in Operation');  
-  //          }  
-  //         });
-
-  //   } else {
-  //   return false;
-  //   }
-  // }
-
-  // function agregarExtra(){
-
-  //   var extra = new Object();
-  //   // extra.descripcion = $('#ExtraAgregar').val(); 
-  //   // console.log(rubro);
-
-  //  $.ajax({  
-  //      url: 'http://localhost:8185/nomasaccidentes/extra',  
-  //      type: 'POST',  
-  //      dataType: 'json',
-  //      contentType : 'application/json',
-  //      data: JSON.stringify(extra),
-  //    success: function (data, textStatus, xhr) {  
-  //        location.reload();
-  //    },  
-  //    error: function (xhr, textStatus, errorThrown) {  
-  //        console.log('Error in Operation');  
-  //    }  
-  //   });
-  // }
-
-  // function buscarExtras(){
- 
-  //        $.ajax({  
-  //            url: 'http://localhost:8185/nomasaccidentes/extra',  
-  //            type: 'GET',  
-  //            dataType: 'json',
-  //            success: function (data, textStatus, xhr) {  
-                  
-  //                 $('#tablaListarExtras').dataTable( {
-  //                     data : data,
-  //                     columns: [
-  //                         {"data" : "id"},
-  //                         {"data" : "idactividad"},
-  //                         {"data" : "valor"},
-  //                         {"data": null,
-  //                          render: function ( data, type, row ) {
-  //                           return "<button type='button' class='btn btn-outline-info' onclick='verActualizarRol("+data.id+")';>Editar</a>";}
-  //                         },
-  //                         {"data": null,
-  //                          render: function ( data, type, row ) {
-  //                             return '<button type="button" class="btn btn-outline-danger" onclick="borrarRol('+data.id+')";>Eliminar</a>';}
-  //                         }
-  //                       ],
-  //                       'paging'      : true,
-  //                       'lengthChange': false,
-  //                       'searching'   : true,
-  //                       'ordering'    : true,
-  //                       'info'        : true,
-  //                       'autoWidth'   : true,
-  //                       "language": {   
-  //                         "sProcessing":     "Procesando...",
-  //                         "sLengthMenu":     "Mostrar _MENU_ registros",
-  //                         "sZeroRecords":    "No se encontraron resultados",
-  //                         "sEmptyTable":     "Ningún dato disponible en esta tabla",
-  //                         "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-  //                         "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-  //                         "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-  //                         "sInfoPostFix":    "",
-  //                         "sSearch":         "Buscar:",
-  //                         "sUrl":            "",
-  //                         "sInfoThousands":  ",",
-  //                         "sLoadingRecords": "Cargando...",
-  //                         "oPaginate": { "sFirst":    "Primero",
-  //                                        "sLast":     "Último",
-  //                                        "sNext":     "Siguiente",
-  //                                        "sPrevious": "Anterior" },
-  //                         "oAria": { "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-  //                                    "sSortDescending": ": Activar para ordenar la columna de manera descendente" },
-  //                         "buttons": { "copy": "Copiar",
-  //                                      "colvis": "Visibilidad" }
-  //                       }
-  //                   });
-  //                  // console.log(data);  
-  //              },  
-  //            error: function (xhr, textStatus, errorThrown) {  
-  //                console.log('Error in Operation');  
-  //            }  
-  //        });
-  //   }
 
 </script>
 

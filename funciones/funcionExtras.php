@@ -1,11 +1,11 @@
 <?php 
 
-if(isset($_POST['dato1'])){
-	buscarExtras();
-}
-if(isset($_POST['dato2'])){
-	agregarExtras($_POST['IDACTIVIDAD'], $_POST['VALOR']);
-}
+// if(isset($_POST['dato1'])){
+// 	buscarExtras();
+// }
+// if(isset($_POST['dato2'])){
+// 	agregarExtras($_POST['IDACTIVIDAD'], $_POST['VALOR']);
+// }
 // if(isset($_POST['dato3'])){
 // 	borrarRubro($_POST['IDRubro']);
 // }
@@ -19,35 +19,35 @@ if(isset($_POST['dato2'])){
 // 	verUltimoId();
 // }
 
-	function buscarExtras(){
+	// function buscarExtras(){
 
-		try{
-			$conn = oci_connect('C##DBUSER', 'DBUSER', 'localhost/XE');
-				if (!$conn) {
-				    $e = oci_error();
-				    trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-				}
-				$sql = "select * from extras";
-				$stid = oci_parse($conn, $sql);
-				oci_execute($stid);
-				$datos = array();
+	// 	try{
+	// 		$conn = oci_connect('C##DBUSER', 'DBUSER', 'localhost/XE');
+	// 			if (!$conn) {
+	// 			    $e = oci_error();
+	// 			    trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+	// 			}
+	// 			$sql = "select * from extras";
+	// 			$stid = oci_parse($conn, $sql);
+	// 			oci_execute($stid);
+	// 			$datos = array();
 
-	        while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)){			
+	//         while ($row = oci_fetch_array($stid, OCI_RETURN_NULLS+OCI_ASSOC)){			
 			
-						$result = array();
-			            $result['ID'] = $row['ID'];
-			            $result['VALOR'] = $row['VALOR'];
-			            $result['IDACTIVIDAD'] = $row['IDACTIVIDAD'];
+	// 					$result = array();
+	// 		            $result['ID'] = $row['ID'];
+	// 		            $result['VALOR'] = $row['VALOR'];
+	// 		            $result['IDACTIVIDAD'] = $row['IDACTIVIDAD'];
 
-			        array_push($datos, $result);  
-	        }
+	// 		        array_push($datos, $result);  
+	//         }
 
-		}catch (exception $e){ 
-			print_r($e);
-			}
+	// 	}catch (exception $e){ 
+	// 		print_r($e);
+	// 		}
 
-			echo json_encode($datos);
-	}
+	// 		echo json_encode($datos);
+	// }
 
 	// function verUltimoId(){
 	// 	try{

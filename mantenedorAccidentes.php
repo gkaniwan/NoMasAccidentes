@@ -15,8 +15,12 @@
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+      <!-- DataTables -->
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini" onload="buscarAccidentes();">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
@@ -37,91 +41,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
-<!--       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item"> -->
-            <!-- Message Start -->
-<!--             <div class="media">
-              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div> -->
-            <!-- Message End -->
-<!--           </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item"> -->
-            <!-- Message Start -->
-<!--             <div class="media">
-              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div> -->
-            <!-- Message End -->
-<!--           </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item"> -->
-            <!-- Message Start -->
-<!--             <div class="media">
-              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div> -->
-            <!-- Message End -->
-<!--           </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li> -->
-      <!-- Notifications Dropdown Menu -->
-<!--       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li> -->
+
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
@@ -150,7 +70,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Nombre Usuario</a>
+          <a href="#" class="d-block" id="NombreUsuario"></a>
         </div>
       </div>
 
@@ -279,107 +199,39 @@
       </div><!-- /.container-fluid -->
     </section>
 
-    <!-- Main content -->
+   <!-- Main content -->
     <section class="content">
 
-        <div class="row">
-
-         <div class="col-lg-12">
-
             <div class="card">
-              <div class="card-header border-0">
+              <div class="card-header">
                 <h3 class="card-title">Accidentes</h3>
                 <div class="card-tools">
-                  <button type="button" class="btn btn-sm btn-block btn-outline-success" onclick="verCrearAccidente();">Agregar</button>
+                  <button type="button" class="btn btn-sm btn-block btn-outline-success" onclick="verCrearAccidente();">Nuevo Accidente</button>
                 </div>
-              <div class="card-body table-responsive p-0">
-                <table class="table table-striped table-valign-middle">
-                  <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Descripción</th>
-                    <th>Cliente</th>
-                    <th>Profesional</th>
-                    <th>Fecha</th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Accidente 1</td>
-                      <td>Cliente 5</td>
-                      <td>Profesional 3</td>
-                      <td>05-04-2020</td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarAccidente();">Modificar</button>
-                      </td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
-                      </td>
-                    </tr>
-                     <tr>
-                      <td>2</td>
-                      <td>Accidente 2</td>
-                      <td>Cliente 2</td>
-                      <td>Profesional 3</td>
-                      <td>05-04-2020</td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarAccidente();">Modificar</button>
-                      </td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
-                      </td>
-                    </tr>
-                     <tr>
-                      <td>3</td>
-                      <td>Accidente 3</td>
-                      <td>Cliente 1</td>
-                      <td>Profesional 3</td>
-                      <td>07-04-2020</td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarAccidente();">Modificar</button>
-                      </td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
-                      </td>
-                    </tr>
-                     <tr>
-                      <td>4</td>
-                      <td>Accidente 4</td>
-                      <td>Cliente 5</td>
-                      <td>Profesional 3</td>
-                      <td>10-04-2020</td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarAccidente();">Modificar</button>
-                      </td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
-                      </td>
-                    </tr>
-                     <tr>
-                      <td>5</td>
-                      <td>Accidente 5</td>
-                      <td>Cliente 3</td>
-                      <td>Profesional 2</td>
-                      <td>15-04-2020</td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarAccidente();">Modificar</button>
-                      </td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
               </div>
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col-md-6 -->
-        </div>
+              <div class="card-body">
+                  <div class="form-group" id="tablaAccidentes">
+                    <table class='table table-bordered table-striped display' style='width:100%' id='tablaListarAccidentes'>
+                            <thead>
+                              <tr>
+                                  <th>ID Accidente</th>
+                                  <th>Nombre cliente</th>
+                                  <th>Nombre Profesional</th>
+                                  <th>Fecha</th>
+                                  <th>Descripción</th>
+                                  <th></th>
+                                  <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
 
+                            </tbody>
+                      </table>
+                  </div>
+              </div>
+<!--         <div class="card-footer" align="right">
+        </div> -->
+        </div>
     </section>
     <!-- /.content -->
   </div>
@@ -412,28 +264,358 @@
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 
-
-
-<!-- OPTIONAL SCRIPTS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
-<script src="dist/js/demo.js"></script>
-<script src="dist/js/pages/dashboard3.js"></script>
+<!-- DataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
 <script>
-  
-  function verActualizarAccidente(){
 
-    $('#modalActualizarAccidente').modal('show');
+
+  $(document).ready(function () {  
+
+    nombreUsuario = localStorage.getItem('NOMBRE');
+    $('#NombreUsuario').html(nombreUsuario);
+      console.log(nombreUsuario);
+
+  });  
+
+      $(document).on('click', '#cerrarNuevoAccidente', function () {
+          var select = document.getElementById("nombreProfesionalAccidente");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+          var select = document.getElementById("nombreClienteAccidente");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+
+      });
+
+      $(document).on('click', '#cerrarNuevoAccidente2', function () {
+          var select = document.getElementById("nombreProfesionalAccidente");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+          var select = document.getElementById("nombreProfesionalAccidente");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+      });
+
+      $(document).on('click', '#cerrarActualizarAccidente2', function () {
+          var select = document.getElementById("nombreClienteActualizar");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+          var select = document.getElementById("nombreProfesionalActualizar");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+      });
+
+      $(document).on('click', '#cerrarActualizarAccidente', function () {
+          var select = document.getElementById("nombreClienteActualizar");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+          var select = document.getElementById("nombreProfesionalActualizar");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+
+      });
+
+ function verActualizarAccidente($id){
+
+    var dato = new Object();
+    dato.id = $id; 
+
+          $.ajax({  
+               url: 'http://localhost:8183/nomasaccidentes/usuario/getByRol/3',  
+               type: 'GET',  
+               dataType: 'json',
+               success: function (data, textStatus, xhr) {  
+
+                var option = '';
+
+                for (var i = 0; i < data.length; i++){
+                   option += '<option value="'+ data[i].id + '">' + data[i].nombre + '</option>';
+                }
+                    
+                    $('#nombreClienteActualizar').append(option);
+
+                              $.ajax({  
+                                     url: 'http://localhost:8183/nomasaccidentes/usuario/getByRol/2',  
+                                     type: 'GET',  
+                                     dataType: 'json',
+                                     success: function (data, textStatus, xhr) {  
+
+                                      var option = '';
+
+                                      for (var i = 0; i < data.length; i++){
+                                         option += '<option value="'+ data[i].id + '">' + data[i].nombre + '</option>';
+                                      }
+
+                                          $('#nombreProfesionalActualizar').append(option);
+
+                                          
+                                                     $.ajax({ 
+                                                         url: 'http://localhost:8186/nomasaccidentes/accidente/'+dato.id,
+                                                         type: 'GET',  
+                                                         dataType: 'json',
+                                                        success: function (data, textStatus, xhr) { 
+
+                                                          $('#idAccidenteActualizar').val(data.id);
+                                                          $('#nombreClienteActualizar').val(data.idUsuarioCliente);
+                                                          $('#nombreProfesionalActualizar').val(data.idUsuarioProfesional);
+                                                          $('#fechaActualizarAccidente').val(data.fecha);
+                                                          $('#descripcionActualizarAccidente').val(data.descripcion);
+
+                                                          $('#modalActualizarAccidente').modal('show');
+
+                                                       },  
+                                                     error: function (xhr, textStatus, errorThrown) {  
+                                                         console.log('Error in Operation');  
+                                                     }  
+                                                    });
+
+                                         },
+                                     error: function (xhr, textStatus, errorThrown) {  
+                                         console.log('Error in Operation');  
+                                     }  
+                                 });
+
+                   },
+               error: function (xhr, textStatus, errorThrown) {  
+                   console.log('Error in Operation');  
+               }  
+           });
 
   }
 
-    function verCrearAccidente(){
 
-    $('#modalNuevoAccidente').modal('show');
+  function modificarAccidente(){
+
+    idCliente = $('#nombreClienteActualizar').val();
+
+    $.ajax({  
+             url: 'http://localhost:8187/nomasaccidentes/contrato/getByCliente/'+idCliente,
+             type: 'GET',  
+             dataType: 'json',
+           success: function (data, textStatus, xhr) {
+
+                var dato = new Object();
+                dato.id = $('#idAccidenteActualizar').val();
+                dato.idUsuarioProfesional = $('#nombreProfesionalActualizar').val();
+                dato.idUsuarioCliente = $('#nombreClienteActualizar').val(); 
+                dato.fecha = $('#fechaActualizarAccidente').val();
+                dato.descripcion = $('#descripcionActualizarAccidente').val();
+                dato.idContrato = data.id;
+
+                     $.ajax({  
+                         url: 'http://localhost:8186/nomasaccidentes/accidente',  
+                         type: 'PUT',  
+                         dataType: 'json',
+                         contentType : 'application/json',
+                         data: JSON.stringify(dato),
+                       success: function (data, textStatus, xhr) {  
+                           location.reload();
+                       },  
+                       error: function (xhr, textStatus, errorThrown) {  
+                           console.log('Error in Operation');  
+                       }  
+                      });
+           },  
+           error: function (xhr, textStatus, errorThrown) {  
+               console.log('Error in Operation');  
+           }  
+          });
+  }
+
+  function borrarAccidente($id){
+
+    if (confirm("Seguro quieres borrar el Accidente ID : " + $id)) {
+      
+          var dato = new Object();
+          dato.id = $id; 
+          // console.log(rubro);
+
+         $.ajax({  
+             url: 'http://localhost:8186/nomasaccidentes/accidente/'+dato.id,
+             type: 'DELETE',  
+             dataType: 'json',
+             contentType : 'application/json',
+             data: JSON.stringify(dato),
+           success: function (data, textStatus, xhr) {  
+               location.reload();
+           },  
+           error: function (xhr, textStatus, errorThrown) {  
+               console.log('Error in Operation');  
+           }  
+          });
+
+    } else {
+    return false;
+    }
+  }
+
+  function agregarAccidente(){
+
+    idcliente = $('#nombreClienteAccidente').val();
+
+    $.ajax({  
+             url: 'http://localhost:8187/nomasaccidentes/contrato/getByCliente/'+idcliente,
+             type: 'GET',  
+             dataType: 'json',
+           success: function (data, textStatus, xhr) {
+
+                  var dato = new Object();
+                      dato.descripcion = $('#descripcionNuevoAccidente').val();
+                      dato.fecha = $('#fechaNuevoAccidente').val(); 
+                      dato.idUsuarioCliente = $('#nombreClienteAccidente').val();
+                      dato.idUsuarioProfesional = $('#nombreProfesionalAccidente').val();  
+                      dato.idContrato = data.id;
+
+                  $.ajax({  
+                         url: 'http://localhost:8186/nomasaccidentes/accidente',  
+                         type: 'POST',  
+                         dataType: 'json',
+                         contentType : 'application/json',
+                         data: JSON.stringify(dato),
+                       success: function (data, textStatus, xhr) {  
+                           location.reload();
+
+                       },  
+                       error: function (xhr, textStatus, errorThrown) {  
+                           console.log('Error in Operation');  
+                       }  
+                      });
+           },  
+           error: function (xhr, textStatus, errorThrown) {  
+               console.log('Error in Operation');  
+           }  
+          });
+  }
+
+   function verCrearAccidente(){
+
+          $.ajax({  
+               url: 'http://localhost:8183/nomasaccidentes/usuario/getByRol/2',  
+               type: 'GET',  
+               dataType: 'json',
+               success: function (data, textStatus, xhr) {  
+
+                var option = '';
+
+                for (var i = 0; i < data.length; i++){
+                   option += '<option value="'+ data[i].id + '">' + data[i].nombre + '</option>';
+                }
+                    
+                    $('#nombreProfesionalAccidente').append(option);
+
+                   },
+               error: function (xhr, textStatus, errorThrown) {  
+                   console.log('Error in Operation');  
+               }  
+           });
+
+            $.ajax({  
+               url: 'http://localhost:8183/nomasaccidentes/usuario/getByRol/3',  
+               type: 'GET',  
+               dataType: 'json',
+               success: function (data, textStatus, xhr) {  
+
+                var option = '';
+
+                for (var i = 0; i < data.length; i++){
+                   option += '<option value="'+ data[i].id + '">' + data[i].nombre + '</option>';
+                }
+
+                    $('#nombreClienteAccidente').append(option);
+                    $('#modalNuevoAccidente').modal('show');
+
+                   },
+               error: function (xhr, textStatus, errorThrown) {  
+                   console.log('Error in Operation');  
+               }  
+           });
 
   }
+
+  function buscarAccidentes(){
+ 
+         $.ajax({  
+             url: 'http://localhost:8186/nomasaccidentes/accidente',  
+             type: 'GET',  
+             dataType: 'json',
+             success: function (data, textStatus, xhr) {
+                  $('#tablaListarAccidentes').dataTable( {
+                      data : data,
+                      columns: [
+                          {"data" : "id"},
+                          {"data" : "nombreCliente"},
+                          {"data" : "nombreProfesional"},
+                          {"data" : "fecha"},
+                          {"data" : "descripcion"},
+                          {"data": null,
+                           render: function ( data, type, row ) {
+                            return "<button type='button' class='btn btn-outline-info' onclick='verActualizarAccidente("+data.id+")';>Editar</a>";}
+                          },
+                          {"data": null,
+                           render: function ( data, type, row ) {
+                              return '<button type="button" class="btn btn-outline-danger" onclick="borrarAccidente('+data.id+')";>Eliminar</a>';}
+                          }
+                        ],
+                        'paging'      : true,
+                        'lengthChange': false,
+                        'searching'   : true,
+                        'ordering'    : true,
+                        'info'        : true,
+                        'autoWidth'   : true,
+                        "language": {   
+                          "sProcessing":     "Procesando...",
+                          "sLengthMenu":     "Mostrar _MENU_ registros",
+                          "sZeroRecords":    "No se encontraron resultados",
+                          "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                          "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                          "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                          "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                          "sInfoPostFix":    "",
+                          "sSearch":         "Buscar:",
+                          "sUrl":            "",
+                          "sInfoThousands":  ",",
+                          "sLoadingRecords": "Cargando...",
+                          "oPaginate": { "sFirst":    "Primero",
+                                         "sLast":     "Último",
+                                         "sNext":     "Siguiente",
+                                         "sPrevious": "Anterior" },
+                          "oAria": { "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                                     "sSortDescending": ": Activar para ordenar la columna de manera descendente" },
+                          "buttons": { "copy": "Copiar",
+                                       "colvis": "Visibilidad" }
+                        }
+                    });
+                   // console.log(data);  
+               },  
+             error: function (xhr, textStatus, errorThrown) {  
+                 console.log('Error in Operation');  
+             }  
+         });
+    }
 
 </script>
+
+
 
 
 

@@ -3,7 +3,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title">Actualizar Checklist</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="cerrarActualizarChecklist2">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -15,51 +15,44 @@
               <form class="form-horizontal">
                 <div class="card-body">
                   <div class="form-group row">
-                    <label for="nombreClienteActividad" class="col-sm-2 col-form-label">Cliente</label>
+                    <label for="idChecklistModificar" class="col-sm-2 col-form-label">ID Checklist</label>
                     <div class="col-sm-10">
-                      <select class="form-control" id="nombreClienteActividad">
-                        <option value="cliente1">Cliente 1</option>
-                        <option value="cliente2">Cliente 2</option>
-                        <option value="cliente3">Cliente 3</option>
-                        <option value="cliente4">Cliente 4</option>
-                        <option value="cliente5">Cliente 5</option>
+                      <input type="text" class="form-control" id="idChecklistModificar" placeholder="Descripción mejora">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="nombreClienteChecklistActualizar" class="col-sm-2 col-form-label">Cliente</label>
+                    <div class="col-sm-10">
+                      <select class="form-control" id="nombreClienteChecklistActualizar">
+
                       </select>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="nombreProfesionalActividad" class="col-sm-2 col-form-label">Profesional</label>
+                    <label for="nombreProfesionalChecklistActualizar" class="col-sm-2 col-form-label">Profesional</label>
                     <div class="col-sm-10">
-                      <select class="form-control" id="nombreProfesionalActividad">
-                        <option value="profesional1">Profesional 1</option>
-                        <option value="profesional2">Profesional 2</option>
-                        <option value="profesional3">Profesional 3</option>
-                        <option value="profesional4">Profesional 4</option>
-                        <option value="profesional5">Profesional 5</option>
+                      <select class="form-control" id="nombreProfesionalChecklistActualizar">
+
                       </select>
                     </div>
                   </div>
 
                   <div class="form-group row">
-                    <label for="fechaNuevaActividad" class="col-sm-2 col-form-label">Fecha</label>
+                    <label for="fechaChecklistActualizar" class="col-sm-2 col-form-label">Fecha</label>
                     <div class="col-sm-10">
-                      <input type="date" class="form-control" id="fechaNuevaActividad" >
+                      <input type="date" class="form-control" id="fechaChecklistActualizar" >
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="tipoNuevaActividad" class="col-sm-2 col-form-label">Tipo Actividad</label>
+                    <label for="actividadesChecklistActualizar" class="col-sm-2 col-form-label">Actividades</label>
                     <div class="col-sm-10">
-                      <select class="form-control" id="tipoNuevaActividad">
-                        <option value="visita">Visita</option>
-                        <option value="capacitacion">Capacitación</option>
-                        <option value="gestion">Gestión</option>
-                        <option value="asesoriaEspecial">Asesoria Especial</option>
-                      </select>
+                      <input type="text" class="form-control" id="actividadesChecklistActualizar" placeholder="Descripción mejora">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="descripcionNuevaActividad" class="col-sm-2 col-form-label">Mejora</label>
+                    <label for="mejorasChecklistActualizar" class="col-sm-2 col-form-label">Mejoras</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="descripcionNuevaActividad" placeholder="Descripción mejora">
+                      <input type="text" class="form-control" id="mejorasChecklistActualizar" placeholder="Descripción mejora">
                     </div>
                   </div>
                 </div>
@@ -70,8 +63,8 @@
               
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-success">Guardar</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="cerrarActualizarChecklist">Cerrar</button>
+              <button type="button" class="btn btn-success" onclick="modificarChecklist();">Guardar</button>
             </div>
           </div>
           <!-- /.modal-content -->

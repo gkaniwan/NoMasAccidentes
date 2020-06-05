@@ -3,7 +3,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title">Nuevo Extra</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="cerrarModalNuevoExtra2">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
@@ -13,9 +13,13 @@
               <form class="form-horizontal">
                 <div class="card-body">
                   <div class="form-group row">
-                    <label for="tipoRolAgregar" class="col-sm-2 col-form-label">Actividad</label>
+                    <label for="nuevoExtraActividad" class="col-sm-2 col-form-label">Actividad</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="tipoRolAgregar" placeholder="Descripción Rol">
+                      <select class="form-control" id="nuevoExtraActividad">
+                        
+                      </select>
+
+                      <!-- <input type="text" class="form-control" id="tipoRolAgregar" placeholder="Descripción Rol"> -->
                     </div>
                   </div>
                   <div class="form-group row">
@@ -29,7 +33,7 @@
             </div>
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="cerrarModalNuevoExtra">Cerrar</button>
               <button type="button" class="btn btn-success" onclick="agregarExtra();">Guardar</button>
             </div>
           </div>
