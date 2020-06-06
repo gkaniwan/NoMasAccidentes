@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>No Mas Accidentes | Mantenedor Pagos</title>
+  <title>No Mas Accidentes | Mantenedor Capacitaciones</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 </head>
-<body class="hold-transition sidebar-mini" onload="buscarPagos();">
+<body class="hold-transition sidebar-mini" onload="buscarCapacitaciones();">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
@@ -69,7 +69,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-        <a href="#" class="d-block" id="NombreUsuario"></a>
+          <a href="#" class="d-block" id="NombreUsuario"></a>
         </div>
       </div>
 
@@ -186,12 +186,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Mantenedor Pagos</h1>
+            <h1>Mantenedor Capacitaciones</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="inicioAdmin.php">Inicio</a></li>
-              <li class="breadcrumb-item active">Mantenedor Pagos</li>
+              <li class="breadcrumb-item active">Mantenedor Capacitaciones</li>
             </ol>
           </div>
         </div>
@@ -203,10 +203,10 @@
 
        <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Pagos</h3>
+          <h3 class="card-title">Capacitaciones</h3>
           
           <div class="card-tools">
-            <button type="button" class="btn btn-sm btn-block btn-outline-success" onclick="verCrearPago();">Agregar Pago</button>
+            <button type="button" class="btn btn-sm btn-block btn-outline-success" onclick="verCrearCapacitacion();">Agregar Capacitacion</button>
             <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
               <i class="fas fa-minus"></i></button>
             <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
@@ -214,14 +214,16 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="form-group" id="tablaPagos">
-              <table class='table table-bordered table-striped display' style='width:100%' id='tablaListarPagos'>
+          <div class="form-group" id="tablaCapacitaciones">
+              <table class='table table-bordered table-striped display' style='width:100%' id='tablaListarCapacitaciones'>
                       <thead>
                         <tr>
-                            <th>ID Pago</th>
+                            <th>ID Capacitación</th>
                             <th>ID Contrato</th>
-                            <th>Fecha</th>
-                            <th>Detalle</th>
+                            <th>Nombre Profesional</th>
+                            <th>Asistentes</th>
+                            <th>Descripción</th>
+                            <th>Material</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -244,8 +246,8 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <?php include('modalActualizarPago.php');?>
-  <?php include('modalNuevoPago.php');?>
+ <?php include('modalActualizarCapacitacion.php');?>
+ <?php include('modalNuevaCapacitacion.php');?> 
 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
@@ -276,9 +278,10 @@
 <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
-<script>
 
-    $(document).ready(function () {  
+<script>
+  
+  $(document).ready(function () {  
 
     nombreUsuario = localStorage.getItem('NOMBRE');
     $('#NombreUsuario').html(nombreUsuario);
@@ -286,32 +289,58 @@
 
    });  
 
-      $(document).on('click', '#cerrarModalNuevoPago', function () {
-          var select = document.getElementById("idContratoNuevoPago");
+      $(document).on('click', '#cerrarModalNuevaMejora', function () {
+          var select = document.getElementById("nombreClienteMejoraNuevo");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+
+          var select = document.getElementById("nombreProfesionalNuevo");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+
+      });
+
+        $(document).on('click', '#cerrarModalNuevaMejora2', function () {
+          var select = document.getElementById("nombreProfesionalNuevo");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+
+          var select = document.getElementById("nombreClienteMejoraNuevo");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+
+      });
+
+        $(document).on('click', '#cerrarModalActualizarMejora2', function () {
+          var select = document.getElementById("nombreProfesionalActualizar");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+
+          var select = document.getElementById("nombreClienteMejoraNuevo");
           var length = select.options.length;
           for (i = length-1; i >= 0; i--) {
             select.options[i] = null;
           }
       });
 
-        $(document).on('click', '#cerrarModalNuevoPago2', function () {
-          var select = document.getElementById("idContratoNuevoPago");
+        $(document).on('click', '#cerrarModalActualizarMejora', function () {
+          var select = document.getElementById("nombreProfesionalActualizar");
           var length = select.options.length;
           for (i = length-1; i >= 0; i--) {
             select.options[i] = null;
           }
-      });
 
-        $(document).on('click', '#cerrarModalActualizarPago', function () {
-          var select = document.getElementById("idContratoActualizarPago");
-          var length = select.options.length;
-          for (i = length-1; i >= 0; i--) {
-            select.options[i] = null;
-          }
-      });
-
-        $(document).on('click', '#cerrarModalActualizarPago2', function () {
-          var select = document.getElementById("idContratoActualizarPago");
+          var select = document.getElementById("nombreClienteMejoraNuevo");
           var length = select.options.length;
           for (i = length-1; i >= 0; i--) {
             select.options[i] = null;
@@ -319,13 +348,13 @@
       });
 
   
-  function verActualizarPago($IDPago){
+  function verActualizarCapacitacion($IDCapacitacion){
 
-     var pago = new Object();
-     pago.id = $IDPago; 
+     var capacitacion = new Object();
+     capacitacion.id = $IDCapacitacion; 
 
           $.ajax({  
-               url: 'http://localhost:8187/nomasaccidentes/contrato',  
+               url: 'http://localhost:8183/nomasaccidentes/usuario/getByRol/3',  
                type: 'GET',  
                dataType: 'json',
                success: function (data, textStatus, xhr) {  
@@ -333,10 +362,65 @@
                 var option = '';
 
                 for (var i = 0; i < data.length; i++){
-                   option += '<option value="'+ data[i].id + '">' + data[i].descripcion + '</option>';
+                   option += '<option value="'+ data[i].id + '">' + data[i].nombre + '</option>';
                 }
                     
-                    $('#idContratoActualizarPago').append(option);
+                    $('#nombreClienteCapacitacionActualizar').append(option);
+
+                       $.ajax({  
+                               url: 'http://localhost:8183/nomasaccidentes/usuario/getByRol/2',  
+                               type: 'GET',  
+                               dataType: 'json',
+                               success: function (data, textStatus, xhr) {  
+
+                                var option = '';
+
+                                for (var i = 0; i < data.length; i++){
+                                   option += '<option value="'+ data[i].id + '">' + data[i].nombre + '</option>';
+                                }
+
+                                    $('#nombreProfesionalActualizar').append(option);
+
+                                           $.ajax({ 
+                                               url: 'http://localhost:8191/nomasaccidentes/capacitacion/'+capacitacion.id,
+                                               type: 'GET',  
+                                               dataType: 'json',
+                                             success: function (data, textStatus, xhr) {  
+
+                                                $("#idCapacitacionActualizar").val(data.id);
+                                                $("#nombreProfesionalActualizar").val(data.idUsuarioProfesional);
+                                                $("#descripcionCapacitacionActualizar").val(data.descripcion);
+                                                $("#asistentesCapacitacionActualizar").val(data.asistentes);
+                                                $("#materialCapacitacionActualizar").val(data.material);
+                                                    idContrato = data.idContrato;
+
+
+                                                    $.ajax({ 
+                                                       url: 'http://localhost:8183/nomasaccidentes/usuario/getByIdContrato/'+idContrato,
+                                                       type: 'GET',  
+                                                       dataType: 'json',
+                                                      success: function (data2, textStatus, xhr) { 
+
+                                                              $('#nombreClienteCapacitacionActualizar').val(data2.id);
+                                                              $('#modalActualizarCapacitacion').modal('show');
+
+                                                     },  
+                                                   error: function (xhr, textStatus, errorThrown) {  
+                                                       console.log('Error in Operation');  
+                                                   }  
+                                                  });
+
+                                             },  
+                                             error: function (xhr, textStatus, errorThrown) {  
+                                                 console.log('Error in Operation');  
+                                             }  
+                                            });
+
+                                   },
+                               error: function (xhr, textStatus, errorThrown) {  
+                                   console.log('Error in Operation');  
+                               }  
+                           });
 
                    },
                error: function (xhr, textStatus, errorThrown) {  
@@ -344,64 +428,63 @@
                }  
            });
 
-         $.ajax({ 
-             url: 'http://localhost:8189/nomasaccidentes/Pago/'+pago.id,
+  }
+
+  function modificarCapacitacion(){
+
+    idCliente = $('#nombreClienteCapacitacionActualizar').val();
+
+    $.ajax({  
+             url: 'http://localhost:8187/nomasaccidentes/contrato/getByCliente/'+idCliente,
              type: 'GET',  
              dataType: 'json',
-           success: function (data, textStatus, xhr) {  
+           success: function (data, textStatus, xhr) {
 
-              $("#idPagoActualizar").val(data.id);
-              $("#idContratoActualizarPago").val(data.idContrato);
-              $("#actualizarFechaPago").val(data.fecha);
-              $("#actualizarDetallePago").val(data.detalle);
 
-              $('#modalActualizarPago').modal('show');
+                var dato = new Object();
+                dato.id = $('#idCapacitacionActualizar').val();
+                dato.idUsuarioProfesional = $("#nombreProfesionalActualizar").val();
+                dato.descripcion = $("#descripcionCapacitacionActualizar").val();
+                dato.asistentes = $("#asistentesCapacitacionActualizar").val();
+                dato.material = $("#materialCapacitacionActualizar").val();
+                dato.idContrato = data.id;
+
+                     $.ajax({  
+                         url: 'http://localhost:8191/nomasaccidentes/capacitacion',  
+                         type: 'PUT',  
+                         dataType: 'json',
+                         contentType : 'application/json',
+                         data: JSON.stringify(dato),
+                       success: function (data, textStatus, xhr) {  
+                           location.reload();
+                       },  
+                       error: function (xhr, textStatus, errorThrown) {  
+                           console.log('Error in Operation');  
+                       }  
+                      });
+        
            },  
            error: function (xhr, textStatus, errorThrown) {  
                console.log('Error in Operation');  
            }  
           });
+
   }
 
+  function borrarCapacitacion($IDCapacitacion){
 
-
-  function modificarPago(){
-
-    var pago = new Object();
-    pago.id = $('#idPagoActualizar').val(); 
-    pago.idContrato = $('#idContratoActualizarPago').val(); 
-    pago.fecha = $('#actualizarFechaPago').val(); 
-    pago.detalle = $('#actualizarDetallePago').val(); 
-
-   $.ajax({  
-       url: 'http://localhost:8189/nomasaccidentes/Pago',  
-       type: 'PUT',  
-       dataType: 'json',
-       contentType : 'application/json',
-       data: JSON.stringify(pago),
-     success: function (data, textStatus, xhr) {  
-         location.reload();
-     },  
-     error: function (xhr, textStatus, errorThrown) {  
-         console.log('Error in Operation');  
-     }  
-    });
-  }
-
-  function borrarPago($IDPago){
-
-    if (confirm("Seguro quieres borrar el Pago ID : " + $IDPago)) {
+    if (confirm("Seguro quieres borrar la capacitación ID : " + $IDCapacitacion)) {
       
-          var pago = new Object();
-          pago.id = $IDPago; 
+          var capacitacion = new Object();
+          capacitacion.id = $IDCapacitacion; 
           // console.log(rubro);
 
          $.ajax({  
-             url: 'http://localhost:8189/nomasaccidentes/Pago/'+pago.id,
+             url: 'http://localhost:8191/nomasaccidentes/capacitacion/'+capacitacion.id,
              type: 'DELETE',  
              dataType: 'json',
              contentType : 'application/json',
-             data: JSON.stringify(pago),
+             data: JSON.stringify(capacitacion),
            success: function (data, textStatus, xhr) {  
                location.reload();
            },  
@@ -415,10 +498,30 @@
     }
   }
 
-  function verCrearPago(){
+  function verCrearCapacitacion(){
 
-      $.ajax({  
-             url: 'http://localhost:8187/nomasaccidentes/contrato',  
+          $.ajax({  
+               url: 'http://localhost:8183/nomasaccidentes/usuario/getByRol/3',  
+               type: 'GET',  
+               dataType: 'json',
+               success: function (data, textStatus, xhr) {  
+
+                var option = '';
+
+                for (var i = 0; i < data.length; i++){
+                   option += '<option value="'+ data[i].id + '">' + data[i].nombre + '</option>';
+                }
+                    
+                    $('#nombreClienteNuevaCapacitacion').append(option);
+
+                   },
+               error: function (xhr, textStatus, errorThrown) {  
+                   console.log('Error in Operation');  
+               }  
+           });
+
+          $.ajax({  
+             url: 'http://localhost:8183/nomasaccidentes/usuario/getByRol/2',  
              type: 'GET',  
              dataType: 'json',
              success: function (data, textStatus, xhr) {  
@@ -426,9 +529,11 @@
                   var option = '';
         
                   for (var i = 0; i < data.length; i++){
-                     option += '<option value="'+ data[i].id + '">' + data[i].descripcion + '</option>';
+                     option += '<option value="'+ data[i].id + '">' + data[i].nombre + '</option>';
                   }
-                  $('#idContratoNuevoPago').append(option);
+                  $('#nombreProfesionalNuevo').append(option);
+
+                  $('#modalNuevaCapacitacion').modal('show');
 
               },
               error: function (xhr, textStatus, errorThrown) {  
@@ -436,53 +541,72 @@
              }  
          });
 
-          $('#modalNuevoPago').modal('show');
+
   }
 
-  function agregarPago(){
+  function agregarCapacitacion(){
 
-    var pago = new Object();
-    pago.fecha = $('#fechaNuevoPago').val();
-    pago.idContrato = $('#idContratoNuevoPago').val();
-    pago.detalle = $('#detalleNuevoPago').val();
+     idcliente = $('#nombreClienteNuevaCapacitacion').val();
+     console.log(idcliente);
 
-   $.ajax({  
-       url: 'http://localhost:8189/nomasaccidentes/Pago',  
-       type: 'POST',  
-       dataType: 'json',
-       contentType : 'application/json',
-       data: JSON.stringify(pago),
-     success: function (data, textStatus, xhr) {  
-         location.reload();
-     },  
-     error: function (xhr, textStatus, errorThrown) {  
-         console.log('Error in Operation');  
-     }  
-    });
+    $.ajax({  
+             url: 'http://localhost:8187/nomasaccidentes/contrato/getByCliente/'+idcliente,
+             type: 'GET',  
+             dataType: 'json',
+           success: function (data, textStatus, xhr) {
+            console.log(data);
+
+                      var capacitacion = new Object();
+                        capacitacion.descripcion = $('#descripcionNuevaCapacitacion').val();
+                        capacitacion.idUsuarioProfesional = $('#nombreProfesionalNuevo').val();
+                        capacitacion.asistentes = $('#asitentesNuevaCapacitacion').val();
+                        capacitacion.material = $('#materialesNuevaCapacitacion').val();
+                        capacitacion.idContrato = data.id;
+
+                           $.ajax({  
+                                   url: 'http://localhost:8191/nomasaccidentes/capacitacion',  
+                                   type: 'POST',  
+                                   dataType: 'json',
+                                   contentType : 'application/json',
+                                   data: JSON.stringify(capacitacion),
+                                 success: function (data, textStatus, xhr) {  
+                                     location.reload();
+                                 },  
+                                 error: function (xhr, textStatus, errorThrown) {  
+                                     console.log('Error in Operation');  
+                                 }  
+                                });
+           },  
+           error: function (xhr, textStatus, errorThrown) {  
+               console.log('Error in Operation');  
+           }  
+          });
   }
 
-  function buscarPagos(){
+  function buscarCapacitaciones(){
  
          $.ajax({  
-             url: 'http://localhost:8189/nomasaccidentes/Pago',  
+             url: 'http://localhost:8191/nomasaccidentes/capacitacion',  
              type: 'GET',  
              dataType: 'json',
              success: function (data, textStatus, xhr) {  
                   
-                  $('#tablaListarPagos').dataTable( {
+                  $('#tablaListarCapacitaciones').dataTable( {
                       data : data,
                       columns: [
                           {"data" : "id"},
                           {"data" : "idContrato"},
-                          {"data" : "fecha"},
-                          {"data" : "detalle"},
+                          {"data" : "nombreProfesional"},
+                          {"data" : "asistentes"},
+                          {"data" : "descripcion"},
+                          {"data" : "material"},
                           {"data": null,
                            render: function ( data, type, row ) {
-                            return "<button type='button' class='btn btn-outline-info' onclick='verActualizarPago("+data.id+")';>Editar</a>";}
+                            return "<button type='button' class='btn btn-outline-info' onclick='verActualizarCapacitacion("+data.id+")';>Editar</a>";}
                           },
                           {"data": null,
                            render: function ( data, type, row ) {
-                              return '<button type="button" class="btn btn-outline-danger" onclick="borrarPago('+data.id+')";>Eliminar</a>';}
+                              return '<button type="button" class="btn btn-outline-danger" onclick="borrarCapacitacion('+data.id+')";>Eliminar</a>';}
                           }
                         ],
                         'paging'      : true,
@@ -523,6 +647,8 @@
     }
 
 </script>
+
+
 
 
 

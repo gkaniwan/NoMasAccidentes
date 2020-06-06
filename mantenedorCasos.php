@@ -15,8 +15,11 @@
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!-- DataTables -->
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini" onload="buscarCasos();">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
@@ -37,91 +40,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
-<!--       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item"> -->
-            <!-- Message Start -->
-<!--             <div class="media">
-              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div> -->
-            <!-- Message End -->
-<!--           </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item"> -->
-            <!-- Message Start -->
-<!--             <div class="media">
-              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div> -->
-            <!-- Message End -->
-<!--           </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item"> -->
-            <!-- Message Start -->
-<!--             <div class="media">
-              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div> -->
-            <!-- Message End -->
-<!--           </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li> -->
-      <!-- Notifications Dropdown Menu -->
-<!--       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li> -->
+  
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
@@ -150,7 +69,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Nombre Usuario</a>
+          <a href="#" class="d-block" id="NombreUsuario"></a>
         </div>
       </div>
 
@@ -169,7 +88,7 @@
             </a>
           </li>
 
-                  <li class="nav-item has-treeview">
+                   <li class="nav-item has-treeview">
             <a  class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
@@ -282,52 +201,43 @@
     <!-- Main content -->
     <section class="content">
 
-        <div class="row">
-
-         <div class="col-lg-12">
-
-            <div class="card">
-              <div class="card-header border-0">
-                <h3 class="card-title">Casos</h3>
-                <div class="card-tools">
-                  <button type="button" class="btn btn-sm btn-block btn-outline-success" onclick="verCrearCaso();">Agregar</button>
-                </div>
-              <div class="card-body table-responsive p-0">
-                <table class="table table-striped table-valign-middle">
-                  <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Descripción</th>
-                    <th>Cliente</th>
-                    <th>Profesional</th>
-                    <th>Fecha</th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Caso 1</td>
-                      <td>Cliente 5</td>
-                      <td>Profesional 3</td>
-                      <td>05-04-2020</td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-block btn-outline-warning" onclick="verActualizarCaso();">Modificar</button>
-                      </td>
-                      <td>
-                        <button type="button" class="btn btn-sm btn-block btn-outline-danger">Eliminar</button>
-                      </td>
-                    </tr>
-                     
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <!-- /.card -->
+       <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Casos</h3>
+          
+          <div class="card-tools">
+            <button type="button" class="btn btn-sm btn-block btn-outline-success" onclick="verCrearCaso();">Agregar Caso</button>
+            <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+              <i class="fas fa-minus"></i></button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+              <i class="fas fa-times"></i></button> -->
           </div>
-          <!-- /.col-md-6 -->
         </div>
+        <div class="card-body">
+          <div class="form-group" id="tablaCasos">
+              <table class='table table-bordered table-striped display' style='width:100%' id='tablaListarCasos'>
+                      <thead>
+                        <tr>
+                            <th>ID Caso</th>
+                            <th>ID Contrato</th>
+                            <th>Nombre Profesional</th>
+                            <th>Descripción</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                      </thead>
+                    <tbody>
+
+                      </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer" align="right">
+          <!-- <button type="button" class="btn btn-success">boton</button> -->
+        </div>
+        <!-- /.card-footer-->
+      </div>
 
     </section>
     <!-- /.content -->
@@ -360,28 +270,375 @@
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<!-- DataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
-
-<!-- OPTIONAL SCRIPTS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
-<script src="dist/js/demo.js"></script>
-<script src="dist/js/pages/dashboard3.js"></script>
 
 <script>
   
-  function verActualizarCaso(){
+  $(document).ready(function () {  
 
-    $('#modalActualizarCaso').modal('show');
+    nombreUsuario = localStorage.getItem('NOMBRE');
+    $('#NombreUsuario').html(nombreUsuario);
+      console.log(nombreUsuario);
 
+   });  
+
+      $(document).on('click', '#cerrarModalNuevoCaso', function () {
+          var select = document.getElementById("nombreClienteCasoNuevo");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+
+          var select = document.getElementById("nombreProfesionalNuevo");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+
+      });
+
+        $(document).on('click', '#cerrarModalNuevoCaso2', function () {
+          var select = document.getElementById("nombreProfesionalNuevo");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+
+          var select = document.getElementById("nombreClienteCasoNuevo");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+
+      });
+
+        $(document).on('click', '#cerrarModalActualizarCaso2', function () {
+          var select = document.getElementById("nombreProfesionalActualizar");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+
+          var select = document.getElementById("nombreClienteCasoActualizar");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+      });
+
+        $(document).on('click', '#cerrarModalActualizarCaso', function () {
+          var select = document.getElementById("nombreProfesionalActualizar");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+
+          var select = document.getElementById("nombreClienteCasoActualizar");
+          var length = select.options.length;
+          for (i = length-1; i >= 0; i--) {
+            select.options[i] = null;
+          }
+      });
+
+  
+  function verActualizarCaso($IDCaso){
+
+     var caso = new Object();
+     caso.id = $IDCaso; 
+
+          $.ajax({  
+               url: 'http://localhost:8183/nomasaccidentes/usuario/getByRol/3',  
+               type: 'GET',  
+               dataType: 'json',
+               success: function (data, textStatus, xhr) {  
+
+                var option = '';
+
+                for (var i = 0; i < data.length; i++){
+                   option += '<option value="'+ data[i].id + '">' + data[i].nombre + '</option>';
+                }
+                    
+                    $('#nombreClienteCasoActualizar').append(option);
+
+                       $.ajax({  
+                               url: 'http://localhost:8183/nomasaccidentes/usuario/getByRol/2',  
+                               type: 'GET',  
+                               dataType: 'json',
+                               success: function (data, textStatus, xhr) {  
+
+                                var option = '';
+
+                                for (var i = 0; i < data.length; i++){
+                                   option += '<option value="'+ data[i].id + '">' + data[i].nombre + '</option>';
+                                }
+
+                                    $('#nombreProfesionalActualizar').append(option);
+
+                                           $.ajax({ 
+                                               url: 'http://localhost:8190/nomasaccidentes/casos/'+caso.id,
+                                               type: 'GET',  
+                                               dataType: 'json',
+                                             success: function (data, textStatus, xhr) {  
+
+                                                $("#idCasoActualizar").val(data.id);
+                                                $("#nombreProfesionalActualizar").val(data.idUsuarioProfesional);
+                                                $("#descripcionCasoActualizar").val(data.descripcion);
+
+                                                    idContrato = data.idContrato;
+
+
+                                                    $.ajax({ 
+                                                       url: 'http://localhost:8183/nomasaccidentes/usuario/getByIdContrato/'+idContrato,
+                                                       type: 'GET',  
+                                                       dataType: 'json',
+                                                      success: function (data2, textStatus, xhr) { 
+
+                                                              $('#nombreClienteCasoActualizar').val(data2.id);
+                                                              $('#modalActualizarCaso').modal('show');
+
+                                                     },  
+                                                   error: function (xhr, textStatus, errorThrown) {  
+                                                       console.log('Error in Operation');  
+                                                   }  
+                                                  });
+
+                                             },  
+                                             error: function (xhr, textStatus, errorThrown) {  
+                                                 console.log('Error in Operation');  
+                                             }  
+                                            });
+
+                                   },
+                               error: function (xhr, textStatus, errorThrown) {  
+                                   console.log('Error in Operation');  
+                               }  
+                           });
+
+                   },
+               error: function (xhr, textStatus, errorThrown) {  
+                   console.log('Error in Operation');  
+               }  
+           });
+
+  }
+
+  function modificarCaso(){
+
+    idCliente = $('#nombreClienteCasoActualizar').val();
+
+    $.ajax({  
+             url: 'http://localhost:8187/nomasaccidentes/contrato/getByCliente/'+idCliente,
+             type: 'GET',  
+             dataType: 'json',
+           success: function (data, textStatus, xhr) {
+
+                var dato = new Object();
+                dato.id = $('#idCasoActualizar').val();
+                dato.idUsuarioProfesional = $("#nombreProfesionalActualizar").val();
+                dato.descripcion = $("#descripcionCasoActualizar").val();
+                dato.idContrato = data.id;
+
+                     $.ajax({  
+                         url: 'http://localhost:8190/nomasaccidentes/casos',  
+                         type: 'PUT',  
+                         dataType: 'json',
+                         contentType : 'application/json',
+                         data: JSON.stringify(dato),
+                       success: function (data, textStatus, xhr) {  
+                           location.reload();
+                       },  
+                       error: function (xhr, textStatus, errorThrown) {  
+                           console.log('Error in Operation');  
+                       }  
+                      });
+        
+           },  
+           error: function (xhr, textStatus, errorThrown) {  
+               console.log('Error in Operation');  
+           }  
+          });
+
+  }
+
+  function borrarCaso($IDCaso){
+
+    if (confirm("Seguro quieres borrar el Caso ID : " + $IDCaso)) {
+      
+          var caso = new Object();
+          caso.id = $IDCaso; 
+          // console.log(rubro);
+
+         $.ajax({  
+             url: 'http://localhost:8190/nomasaccidentes/casos/'+caso.id,
+             type: 'DELETE',  
+             dataType: 'json',
+             contentType : 'application/json',
+             data: JSON.stringify(caso),
+           success: function (data, textStatus, xhr) {  
+               location.reload();
+           },  
+           error: function (xhr, textStatus, errorThrown) {  
+               console.log('Error in Operation');  
+           }  
+          });
+
+    } else {
+    return false;
+    }
   }
 
   function verCrearCaso(){
 
-    $('#modalNuevoCaso').modal('show');
+          $.ajax({  
+               url: 'http://localhost:8183/nomasaccidentes/usuario/getByRol/3',  
+               type: 'GET',  
+               dataType: 'json',
+               success: function (data, textStatus, xhr) {  
+
+                var option = '';
+
+                for (var i = 0; i < data.length; i++){
+                   option += '<option value="'+ data[i].id + '">' + data[i].nombre + '</option>';
+                }
+                    
+                    $('#nombreClienteCasoNuevo').append(option);
+
+                   },
+               error: function (xhr, textStatus, errorThrown) {  
+                   console.log('Error in Operation');  
+               }  
+           });
+
+                              $.ajax({  
+                                 url: 'http://localhost:8183/nomasaccidentes/usuario/getByRol/2',  
+                                 type: 'GET',  
+                                 dataType: 'json',
+                                 success: function (data, textStatus, xhr) {  
+
+                                      var option = '';
+                            
+                                      for (var i = 0; i < data.length; i++){
+                                         option += '<option value="'+ data[i].id + '">' + data[i].nombre + '</option>';
+                                      }
+                                      $('#nombreProfesionalNuevo').append(option);
+
+                                      $('#modalNuevoCaso').modal('show');
+
+                                  },
+                                  error: function (xhr, textStatus, errorThrown) {  
+                                     console.log('Error in Operation');  
+                                 }  
+                             });
+
 
   }
 
+  function agregarCaso(){
+
+     idcliente = $('#nombreClienteCasoNuevo').val();
+     console.log(idcliente);
+
+    $.ajax({  
+             url: 'http://localhost:8187/nomasaccidentes/contrato/getByCliente/'+idcliente,
+             type: 'GET',  
+             dataType: 'json',
+           success: function (data, textStatus, xhr) {
+            console.log(data);
+
+                      var caso = new Object();
+                        caso.descripcion = $('#descripcionNuevoCaso').val();
+                        caso.idUsuarioProfesional = $('#nombreProfesionalNuevo').val();
+                        caso.idContrato = data.id;
+
+                           $.ajax({  
+                                   url: 'http://localhost:8190/nomasaccidentes/casos',  
+                                   type: 'POST',  
+                                   dataType: 'json',
+                                   contentType : 'application/json',
+                                   data: JSON.stringify(caso),
+                                 success: function (data, textStatus, xhr) {  
+                                     location.reload();
+                                 },  
+                                 error: function (xhr, textStatus, errorThrown) {  
+                                     console.log('Error in Operation');  
+                                 }  
+                                });
+           },  
+           error: function (xhr, textStatus, errorThrown) {  
+               console.log('Error in Operation');  
+           }  
+          });
+  }
+
+  function buscarCasos(){
+ 
+         $.ajax({  
+             url: 'http://localhost:8190/nomasaccidentes/casos',  
+             type: 'GET',  
+             dataType: 'json',
+             success: function (data, textStatus, xhr) {  
+                  
+                  $('#tablaListarCasos').dataTable( {
+                      data : data,
+                      columns: [
+                          {"data" : "id"},
+                          {"data" : "idContrato"},
+                          {"data" : "nombreProfesional"},
+                          {"data" : "descripcion"},
+                          {"data": null,
+                           render: function ( data, type, row ) {
+                            return "<button type='button' class='btn btn-outline-info' onclick='verActualizarCaso("+data.id+")';>Editar</a>";}
+                          },
+                          {"data": null,
+                           render: function ( data, type, row ) {
+                              return '<button type="button" class="btn btn-outline-danger" onclick="borrarCaso('+data.id+')";>Eliminar</a>';}
+                          }
+                        ],
+                        'paging'      : true,
+                        'lengthChange': false,
+                        'searching'   : true,
+                        'ordering'    : true,
+                        'info'        : true,
+                        'autoWidth'   : true,
+                        "language": {   
+                          "sProcessing":     "Procesando...",
+                          "sLengthMenu":     "Mostrar _MENU_ registros",
+                          "sZeroRecords":    "No se encontraron resultados",
+                          "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                          "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                          "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                          "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                          "sInfoPostFix":    "",
+                          "sSearch":         "Buscar:",
+                          "sUrl":            "",
+                          "sInfoThousands":  ",",
+                          "sLoadingRecords": "Cargando...",
+                          "oPaginate": { "sFirst":    "Primero",
+                                         "sLast":     "Último",
+                                         "sNext":     "Siguiente",
+                                         "sPrevious": "Anterior" },
+                          "oAria": { "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                                     "sSortDescending": ": Activar para ordenar la columna de manera descendente" },
+                          "buttons": { "copy": "Copiar",
+                                       "colvis": "Visibilidad" }
+                        }
+                    });
+                   // console.log(data);  
+               },  
+             error: function (xhr, textStatus, errorThrown) {  
+                 console.log('Error in Operation');  
+             }  
+         });
+    }
+
 </script>
+
+
 
 
 
