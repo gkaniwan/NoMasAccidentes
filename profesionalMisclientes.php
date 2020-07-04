@@ -209,46 +209,63 @@
          <div class="col-lg-12">
 
             <div class="card">
-              <div class="card-header border-0">
-                <h3 class="card-title">Clientes</h3>
+              <div class="card-header row">
+                <div class="form-control border-0 col-md-1">
+                  <h3 class="card-title">Cliente</h3>
+                </div>
+                <div class="form-group col-md-6">
+                  <select id="selectClientes" class="form-control">
+                    <option value="1">Cliente 1</option>
+                    <option value="2">Cliente 2</option>
+                    <option value="3">Cliente 3</option>
+                  </select>
+                </div>
+              </div>
               <div class="card-body table-responsive p-0">
                 <table class="table table-striped table-valign-middle">
                   <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Rut</th>
-                    <th>Mail</th>
-                    <th>Telefono</th>
-                    <th>Direccion</th>
+                    <th>Cliente</th>
+                    <th>Tipo Actividad</th>
+                    <th>Fecha</th>
+                    <th>Descripcion</th>
+                    <th></th>
                   </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>1</td>
                       <td>Cliente 1</td>
-                      <td>123456-7</td>
-                      <td>Cliente1@clientes.cl</td>
-                      <td>12345678</td>
-                      <td>Calle Sin nombre 100</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>Cliente 3</td>
-                      <td>98745612-5</td>
-                      <td>Cliente3@clientes.cl</td>
-                      <td>7539518</td>
-                      <td>Calle Sin nombre 875</td>
+                      <td>Capacitación</td>
+                      <td>04-06-2020</td>
+                      <td>Primera Capacitación del mes, realizada en la empresa</td>
+                      <td><button type="button" class="btn btn-warning">Editar</button></td>
                     </tr>
                     <tr>
                       <td>4</td>
-                      <td>Cliente 4</td>
-                      <td>8527410-7</td>
-                      <td>Cliente4@clientes.cl</td>
-                      <td>96385274</td>
-                      <td>Calle Sin nombre 684</td>
+                      <td>Cliente 1</td>
+                      <td>Asesoria</td>
+                      <td>10-06-2020</td>
+                      <td>Asesoria realizada a cliente, por consultas relacionadas a caso COVID</td>
+                      <td><button type="button" class="btn btn-warning">Editar</button></td>
                     </tr>
-
+                    <tr>
+                      <td>6</td>
+                      <td>Cliente 1</td>
+                      <td>Capacitación</td>
+                      <td>25-06-2020</td>
+                      <td>Segunda Capacitación del mes, realizada en la empresa</td>
+                      <td><button type="button" class="btn btn-warning">Editar</button></td>
+                    </tr>
+                    <tr>
+                      <td>10</td>
+                      <td>Cliente 1</td>
+                      <td>Visita</td>
+                      <td>02-07-2020</td>
+                      <td>Se programa visita con cliente para el día especificado.</td>
+                      <td><button type="button" class="btn btn-warning">Editar</button></td>
+                    </tr>
                   </tbody>
                 </table>
               </div>

@@ -49,7 +49,7 @@
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="selectRolUsuarioAgregar" class="col-sm-2 col-form-label">Rubro</label>
+                    <label for="selectRolUsuarioAgregar" class="col-sm-2 col-form-label">Rol</label>
                     <div class="col-sm-10">
                       <select class="form-control" id="selectRolUsuarioAgregar">
 

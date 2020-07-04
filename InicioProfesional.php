@@ -1,9 +1,5 @@
 <?php
   session_start();
-  // error_reporting(E_ALL);
-  // ini_set('display_errors', '1');
-
-  // if(!$_SESSION['NOMBRE']){header('Location: expirado.php');}
 
 ?>
 <!DOCTYPE html>
@@ -24,7 +20,7 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini" onload="consultarClientes(); buscarActividades();">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
@@ -117,83 +113,83 @@
       <div class="container-fluid">
 
         <div class="row">
-          <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box bg-warning">
-              <span class="info-box-icon"><i class="far fa-calendar-alt"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Proxima Visita</span>
-                <span class="info-box-number">21-04-2020</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->          
-        </div>
-
-        <div class="row">
           <!-- left column -->
-          <div class="col-md-6">
+          <div class="col-md-5">
             <!-- Horizontal Form -->
             <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title">Crear Actividad</h3>
+                <h3 class="card-title">Nueva Actividad</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
               <form class="form-horizontal">
                 <div class="card-body">
                   <div class="form-group row">
-                    <label for="reportarAccidente" class="col-sm-2 col-form-label">Cliente</label>
-                    <div class="col-sm-10">
-                      <select class="form-control" id="reportarAccidente">
-                        <option value="accidente1">Cliente 1</option>
-                        <option value="accidente2">cliente 3</option>
-                        <option value="accidente3">cliente 4</option>
+                    <label for="clientesSelect" class="col-sm-4 col-form-label">Cliente</label>
+                    <div class="col-sm-8">
+                      <select class="form-control" id="clientesSelect">
+                        
                       </select>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="reportarAccidente" class="col-sm-2 col-form-label">Tipo Actividad</label>
-                    <div class="col-sm-10">
+                    <label for="reportarAccidente" class="col-sm-4 col-form-label">Tipo Actividad</label>
+                    <div class="col-sm-8">
                       <select class="form-control" id="reportarAccidente">
-                        <option value="accidente1">Capacitación</option>
-                        <option value="accidente2">Planificar Visita</option>
-                        <option value="accidente3">Asesoria</option>
+                        <option value="1">Capacitación</option>
+                        <option value="2">Planificar Visita</option>
+                        <option value="3">Gestión</option>
+                        <option value="4">CheckList</option>
                       </select>
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="asesoriaFecha" class="col-sm-2 col-form-label">Fecha</label>
-                    <div class="col-sm-10">
-                      <input type="date" class="form-control" id="asesoriaFecha">
+                    <label for="fechaActividad" class="col-sm-4 col-form-label">Fecha</label>
+                    <div class="col-sm-8">
+                      <input type="date" class="form-control" id="fechaActividad">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="descripcionAccidente" class="col-sm-2 col-form-label">Descripción</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="descripcionAccidente" placeholder="Descripcion">
+                    <label for="descripcionActividad" class="col-sm-4 col-form-label">Descripción</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="descripcionActividad" placeholder="Descripcion">
                     </div>
                   </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-success float-right">Guardar</button>
-                  <button type="submit" class="btn btn-default">Borrar</button>
+                  <button type="submit" class="btn btn-success float-right" onclick="guardarActividad();">Guardar</button>
+                  <!-- <button type="submit" class="btn btn-default">Borrar</button> -->
                 </div>
                 <!-- /.card-footer -->
               </form>
             </div>
             <!-- /.card -->
         </div>
-        <div class="col-md-6">
+        
+        <div class="col-md-7">
+
+          <section class="content">
+            <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">Actividades Profesional</h3>
+                <div class="card-tools">
+                  <!-- <button type="button" class="btn btn-sm btn-block btn-outline-success" onclick="verCrearAccidente();">Nuevo Accidente</button> -->
+                </div>
+              </div>
+              <div class="card-body">
+                  <div class="form-group" id="divListarActividades">
+                    
+                  </div>
+              </div>
+<!--         <div class="card-footer" align="right">
+        </div> -->
+        </div>
+    </section>
 
         </div>
-
+        </div>
       </div>
-    </div>
-
     </section>
     <!-- /.content -->
   </div>
@@ -223,6 +219,12 @@
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 
+<!-- DataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
 
 <script>
   
@@ -230,9 +232,98 @@
 
     nombreUsuario = localStorage.getItem('NOMBRE');
     $('#NombreUsuario').html(nombreUsuario);
-      console.log(nombreUsuario);
 
    });  
+
+   function consultarClientes(){
+
+    dato1 = '1';
+ 
+         $.ajax({  
+             url: './funciones/funcionesProfesional.php', 
+             type: 'POST',
+             data: {dato1 : dato1},
+             cache: false,
+             success: function(resultado) {
+              console.log(resultado);
+                $('#clientesSelect').html(resultado);
+                },
+              
+         });
+   }
+
+   function buscarActividades(){
+
+  nombreProfesional = localStorage.getItem('NOMBRE');
+  console.log(nombreProfesional);
+ 
+         $.ajax({  
+             url: './funciones/funcionesProfesional.php',  
+             type: 'POST',
+             data: {nombreProfesional : nombreProfesional},
+             cache: false,
+             success: function(resultado) {
+                $('#divListarActividades').html(resultado);
+                },
+             complete: function () {
+                  $('#tablaListarActividades').dataTable( {
+                        'paging'      : true,
+                        'lengthChange': false,
+                        'searching'   : false,
+                        'ordering'    : true,
+                        'info'        : false,
+                        'autoWidth'   : true,
+                        "lengthMenu": [[5, 10, 20], [5, 10, 20]],
+                        "order": [[ 0, "desc" ]],
+                        "language": {   
+                          "sProcessing":     "Procesando...",
+                          "sLengthMenu":     "Mostrar _MENU_ registros",
+                          "sZeroRecords":    "No se encontraron resultados",
+                          "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                          "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                          "sInfoPostFix":    "",
+                          "sSearch":         "Buscar:",
+                          "sUrl":            "",
+                          "sInfoThousands":  ",",
+                          "sLoadingRecords": "Cargando...",
+                          "oPaginate": { "sFirst":    "Primero",
+                                         "sLast":     "Último",
+                                         "sNext":     "Siguiente",
+                                         "sPrevious": "Anterior" },
+                          "oAria": { "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                                     "sSortDescending": ": Activar para ordenar la columna de manera descendente" },
+                          "buttons": { "copy": "Copiar",
+                                       "colvis": "Visibilidad" }
+                          }
+                    });
+            } 
+         });
+    }
+
+    function formato(texto){
+  return texto.replace(/^(\d{4})-(\d{2})-(\d{2})$/g,'$3/$2/$1');
+  }
+
+    function guardarActividad(){
+
+    nombreProfesional = localStorage.getItem('NOMBRE');
+    idClientes = $('#clientesSelect').val();
+    tipoActividad = $('#reportarAccidente').val();
+    fechaActividad = $('#fechaActividad').val();
+    descripcionActividad= $('#descripcionActividad').val();
+    var salida = formato(fechaActividad);
+
+    $.ajax({
+        url: "./funciones/funcionesProfesional.php",
+        type:"POST",
+        data:{nombreProfesional : nombreProfesional, idClientes : idClientes, tipoActividad : tipoActividad, fechaActividad : salida, descripcionActividad : descripcionActividad},
+        cache:false,
+        success:function(resultado){
+
+          alert(resultado);
+        }
+    });
+  }
 
  
 </script>
