@@ -1,14 +1,11 @@
 <?php 
 
-
 if(isset($_POST['clienteAccidente'])){
 	agregarActividad($_POST['clienteAccidente'], $_POST['fechaAccidente'], $_POST['descripcionAccidente']);
 }
 if(isset($_POST['nombreCliente'])){
 	listarAccidentes($_POST['nombreCliente']);
 }
-
-
 
 	function agregarActividad($nombreCliente, $fecha, $descripcion){
 
@@ -45,8 +42,6 @@ if(isset($_POST['nombreCliente'])){
 		print_r("Accidente Agregado");
 	}
 
-
-
 	function listarAccidentes($nombreCliente){
 
 		$conn = oci_connect('C##DBUSER', 'DBUSER', 'localhost/XE');
@@ -78,7 +73,6 @@ if(isset($_POST['nombreCliente'])){
 
 	while ($row2 = oci_fetch_array($stid2, OCI_RETURN_NULLS+OCI_ASSOC)){	
 
-		    	
 	     $html .= "<tr>
 	     		   <td>".$row2['ID']."</td>
 	               <td>".$row2['FECHA']."</td>

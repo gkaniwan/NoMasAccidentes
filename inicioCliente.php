@@ -1,9 +1,5 @@
 <?php
   session_start();
-  // error_reporting(E_ALL);
-  // ini_set('display_errors', '1');
-
-  // if(!$_SESSION['NOMBRE']){header('Location: expirado.php');}
 
 ?>
 <!DOCTYPE html>
@@ -35,8 +31,6 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
     </ul>
-
-
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
@@ -84,14 +78,6 @@
               </p>
             </a>
           </li>
-<!--           <li class="nav-item has-treeview">
-            <a href="inicioCliente.php" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Descargar Reporte
-              </p>
-            </a>
-          </li> -->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -117,24 +103,6 @@
       <div class="container-fluid">
 
         <div class="row">
-
-<!--           <div class="col-md-3 col-sm-6 col-12">
-            <div class="info-box bg-warning">
-              <span class="info-box-icon"><i class="far fa-calendar-alt"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Proxima Visita</span>
-                <span class="info-box-number">21-04-2020</span>
-
-                <div class="progress">
-                  <div class="progress-bar" style="width: 70%"></div>
-                </div>
-                <span class="progress-description">
-                  70% Increase in 30 Days
-                </span>
-              </div>
-            </div>
-          </div> -->
 
         </div>
 
@@ -179,44 +147,6 @@
             </div>
             <!-- /.card -->
 
-          <!-- Horizontal Form -->
-<!--             <div class="card card-info">
-              <div class="card-header">
-                <h3 class="card-title">Solicitud Actividad</h3>
-              </div>
-              <form class="form-horizontal">
-                <div class="card-body">
-                  <div class="form-group row">
-                    <label for="reportarAccidente" class="col-sm-3 col-form-label">Tipo de Actividad</label>
-                    <div class="col-sm-9">
-                      <select class="form-control" id="reportarAccidente">
-                        <option value="accidente1">Capacitación</option>
-                        <option value="accidente2">Visita</option>
-                        <option value="accidente3">Gestiones</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="asesoriaFecha" class="col-sm-3 col-form-label">Fecha</label>
-                    <div class="col-sm-9">
-                      <input type="date" class="form-control" id="asesoriaFecha">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="descripcionAsesoria" class="col-sm-3 col-form-label">Descripción</label>
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" id="descripcionAsesoria" placeholder="Descripcion solicitud">
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-success float-right">Enviar</button>
-                </div>
-              </form>
-            </div> -->
-            <!-- /.card -->
-
-
         </div>
         <div class="col-md-7">
 
@@ -236,13 +166,11 @@
 <!--         <div class="card-footer" align="right">
         </div> -->
         </div>
-    </section>
+      </section>
 
         </div>
 
       </div>
-
-
 
     </div>
 
@@ -281,12 +209,6 @@
 <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
-<!-- OPTIONAL SCRIPTS -->
-<!-- <script src="plugins/chart.js/Chart.min.js"></script>
-<script src="dist/js/demo.js"></script>
-<script src="dist/js/pages/dashboard3.js"></script>
- -->
-
 <script>
   
   $(document).ready(function () {  
@@ -295,7 +217,6 @@
     $('#NombreUsuario').html(nombreUsuario);
     $('#clienteAccidente').val(nombreUsuario);
     $('#asesoriaCliente').val(nombreUsuario);
-
 
 });
 
@@ -370,11 +291,8 @@ function buscarAccidentes(){
         }
     });
   }
-
-
  
 </script>
-
 
 </body>
 </html>
